@@ -45,7 +45,7 @@ $('.login').on('submit', function(e) {
       <span class="state">Log in</span>
     </button>
   </form>
-  <footer><a target="blank" href="http://boudra.me/">boudra.me</a></footer>
+  <footer><a target="blank" href="index">boudra.me</a></footer>
 </div>
 </body>
 </html>
