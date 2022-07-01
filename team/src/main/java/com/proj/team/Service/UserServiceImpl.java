@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proj.team.DAO.UserDAO;
-import com.proj.team.DTO.UserDTO;
+import com.proj.team.DTO.UserDTO2;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 	
 	
 	@Override
-	public int getUser(UserDTO dto) throws Exception {
+	public int getUser(UserDTO2 dto) throws Exception {
 		return userDao.selectUserDTO(dto);
 	}
 

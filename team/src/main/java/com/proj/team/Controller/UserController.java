@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.proj.team.DTO.UserDTO;
+import com.proj.team.DTO.UserDTO2;
 import com.proj.team.Service.UserService;
 
 @Controller
@@ -19,16 +19,17 @@ public class UserController {
 	
 	@SuppressWarnings("null")
 	@RequestMapping(value ="/login", method = RequestMethod.POST)
-		public String userCheck(UserDTO dto) {
+		public String userCheck(UserDTO2 dto) {
 				HttpSession session = null;
 				String path ="";
-				String u_id = dto.getU_id();
+				
 				try {
+					
 					
 				int result = userService.getUser(dto);
 				
 					if (result == 1 ) {
-						session.setAttribute("u_id", u_id);
+						session.setAttribute("u_id", dto.getU_id());
 						path ="home";
 						
 					}else {
