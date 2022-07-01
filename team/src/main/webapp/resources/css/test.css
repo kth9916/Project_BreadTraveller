@@ -34,7 +34,7 @@ body {
 #inviteContainer .acceptContainer.loadIn {
   opacity: 1;
   margin-left: 0;
-  transition: 0.5s ease;
+  transition: 1s ease;
 }
 #inviteContainer .acceptContainer:before {
   content: "";
@@ -134,7 +134,7 @@ form h1.loadIn {
   position: relative;
 }
 .logoContainer img:first-child {
-  width: 150px;
+  width: 200px;
 }
 .logoContainer .text {
   padding: 25px 0 10px 0;

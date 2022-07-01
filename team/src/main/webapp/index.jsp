@@ -25,22 +25,22 @@ $(function () {
 	);
 
 	setTimeout(function () {
-		$(".logoContainer").transition({ scale: 1 }, 700, "ease");
+		$(".logoContainer").transition({ scale: 1 }, 50, "ease-in");
 		setTimeout(function () {
 			$(".logoContainer .logo").addClass("loadIn");
 			setTimeout(function () {
 				$(".logoContainer .text").addClass("loadIn");
 				setTimeout(function () {
-					$(".acceptContainer").transition({ height: "431.5px" });
+					$(".acceptContainer").transition({ height: "531.5px", width: "600px" });
 					setTimeout(function () {
 						$(".acceptContainer").addClass("loadIn");
 						setTimeout(function () {
 							$(".formDiv, form h1").addClass("loadIn");
-						}, 500);
-					}, 500);
-				}, 500);
-			}, 500);
-		}, 1000);
+						}, 700, "ease");
+					}, 600, "ease");
+				}, 500, "ease");
+			}, 400);
+		},  "ease-in");
 	}, 10);
 });
 
