@@ -1,0 +1,71 @@
+스프링 예외 설정!
+
+1. try catch 이용 >>범위(메소드)
+  - 컨트롤러에서 try catch로 잡아주면 됨.
+
+
+2. @ExceptionHandler 이용 >>범위(컨트롤러 1개)
+  - 컨트롤러 내 예외처리부분을 메소드로 빼내기
+  - 메소드 작성 후 @ExceptionHandler 위에 적어주기 
+   - 예시 
+@ExceptionHandler(Exception.class)< 예외종류 null~ file~ class~ 등등 ! 배열로도 적을수 있다.({예외종류,예외종류})
+public String catcher(Exception e, Model m){        	
+	m.addAttribute("e",e); // error view로 갈때 예외관련된 내용 을 표시해주기 위해 model에 담아주자
+        	return "error";
+   - try catch가 메소드로 바뀐거라고 생각하자~
+   - 개별적으로 예외를 발생시키고싶은 경우 사용!
+
+
+3. @ControllerAdvice 이용 >> 범위(모든컨트롤러)
+- 예시
+@ControllerAdvice(패키지 지정시 해당 패키지만! 안 적으면 모든패키지에서 적용)
+public class ExceptionController {
+
+    @ExceptionHandler(Exception.class)
+    public String catcher(Exception e, Model m){
+        m.addAttribute("e",e);
+        return "error";
+    }
+}
+- 컨트롤러 전체에 대한 에러를 처리하고 싶을때! 컨트롤러에 @ControllerAdvice 붙여주고 안에 예외메소드들 작성해주기!!
+- 전체적으로 발생하는 예외를 처리하고싶을때 사용!
+
+****** 예외는 발생한 곳에서 가깝게 설정된 예외가 발생된다! ******
+**** userController에서 예외처리 1개 있고 전체처리되는 예외가 있을때 우선순위는 userController에서 처리한 예외가 실행 ****
+
+
++ 추가 설정 @ResponseStatus(상태코드) 
+- 예외처리로 "error" 뷰로 return하면 상태코드가 200이 나온다. 
+- 에러뷰로가라해서 갔으니 에러는 발생했어도 너가하라는대로 뷰로갔으니까 정상처리야! 라고 하는 멍청한컴퓨터..
+- 근데 에러니까 상태코드가 200이면 안됌! 따라서 우리가 바꿔줘야한다 그때 이용하는게 ResponseStatus
+- 예시
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)>> 400번 에러로 바꿔주자...
+    public String catcher(Exception e, Model m){
+        m.addAttribute("e",e);
+        return "error"; 
+- 추가로 사용자가 정의한 예외는 기본이 500이기때문에 바꾸고 싶을때도 사용하자.
+
+
+4. web.xml 이용 >> 상태코드별로 설정
+<error-page>
+	<error-code>400</error-code>
+	<location>/error400.jsp</location>
+</error-page>
+- 400 상태코드가 뜨면! error400이라는 뷰를 보여줄꺼야 라고 설정하기 
+
+
+5.servletcontext.xml 이용 >> 예외 종류별 설정
+<beans:bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<beans:property name="defaultErrorView" value="error"/>
+    		<beans:property name="exceptionMappings">
+      			<beans:props>
+        			<beans:prop key="예외종류"> 에러 view (설정시 view파일에 에러view 작성)</beans:prop>
+      			</beans:props>
+    		</beans:property>
+		<beans:property name="statusCodes">
+			<beans:props>
+        			<beans:prop key="에러 view">위에서 지정한 에러 view에 대한 상태코드 작성</beans:prop> 
+			</beans:props>
+		</beans:property>
+  	</beans:bean>	
