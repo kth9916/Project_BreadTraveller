@@ -16,3 +16,4 @@ like varchar2 null,                                   -- 좋아요 게시물?
 question varchar2(1000) not null,                    -- 아이디 찾기용 질문
 answer varchar2 (1000) not null                        -- 답변
 );
+select * from b_user;

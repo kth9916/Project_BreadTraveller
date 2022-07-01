@@ -1,14 +1,15 @@
 package com.proj.team.DTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter @ToString @NoArgsConstructor
+@Getter @Setter @ToString @NoArgsConstructor @AllArgsConstructor
 public class UserDTO {
 
-	private Integer u_num; 
+	private int u_num; 
 	private String u_id;
 	private String u_pass;
 	private String email;
@@ -19,8 +20,8 @@ public class UserDTO {
 	private String post;
 	private String u_name;
 	private String u_profile;
-	private Integer point;
-	private Integer apoint; 
+	private int point;
+	private int apoint; 
 	private String u_date;
 	private String likes;
 	private String question;

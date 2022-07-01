@@ -4,14 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.proj.team.DTO.UserDTO" alias="UserDTO"/>
-        <!-- <typeAlias alias ="UserDto" type="com.my.pro"/>-->
+       
+         <typeAlias type="com.proj.team.DTO.UserDTO" alias="UserDTO"/>      
+       
         <!--여러개 등록할 수 있다.-->
         <!--여러개 등록할 수 있다.-->
     </typeAliases>
     
+    <!-- 
     <mappers>
 		<mapper resource="/mapper/UserMapper.xml"/> 
 	</mappers>
+     -->
     
 </configuration>

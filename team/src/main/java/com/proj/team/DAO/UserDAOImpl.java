@@ -1,6 +1,6 @@
 package com.proj.team.DAO;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,9 +10,9 @@ import com.proj.team.DTO.UserDTO;
 public class UserDAOImpl implements UserDAO {
 
 	@Autowired
-	SqlSessionTemplate session;
+	SqlSession session;
 	
-	private static String namespace ="com.proj.team.DTO.UserMapper";
+	private static String namespace ="com.proj.team.DAO.UserMapper.";
 	
 	@Override
 	public int selectUserDTO(UserDTO dto) throws Exception {
