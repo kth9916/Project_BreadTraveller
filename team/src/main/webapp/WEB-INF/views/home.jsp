@@ -9,6 +9,8 @@
 </head>
 <link href ="<c:url value="/resources/css/test.css"></c:url>" rel ='stylesheet'/>
 <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+
 <script type="text/javascript">
 
 var working = false;

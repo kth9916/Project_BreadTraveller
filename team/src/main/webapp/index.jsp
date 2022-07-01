@@ -6,11 +6,14 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <link href ="<c:url value="/resources/css/test.css"></c:url>" rel ='stylesheet'/>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.js" integrity="sha256-mkdmXjMvBcpAyyFNCVdbwg4v+ycJho65QLDwVE3ViDs=" crossorigin="anonymous"></script>
 <script type="text/javascript">
+
 //JQUERY
 $(function () {
 	var images = [
@@ -68,6 +71,18 @@ $(function () {
           <div class="formDiv" style="transition-delay: 0.6s">
             <button class="acceptBtn" type="submit">Login</button><span class="register">Need an account?<a href="#">Register</a></span>
           </div>
+          <!-- 네이버 로그인 버튼 노출 영역 -->
+  <div id="naver_id_login"></div>
+  <!-- //네이버 로그인 버튼 노출 영역 -->
+  <script type="text/javascript">
+  	var naver_id_login = new naver_id_login("SqFnSnfV_TU6YB8er6Qe", "http://localhost:8787/team/callback.jsp");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("white", 2,40);
+  	naver_id_login.setDomain("http://localhost:8787/team/");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
+  </script>
         </div>
       </form>
     </div>
