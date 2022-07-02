@@ -35,7 +35,7 @@ public class test {
 		dto.setU_Id("a");
 		dto.setU_Pass("a");
 				
-		System.out.println(dto);
+		System.out.println("A"+dto);
 		UserDto dto2 = userDao.select(dto);
 		System.out.println(dto2);
 		assertTrue(dto2.equals(dto));
