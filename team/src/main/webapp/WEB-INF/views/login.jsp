@@ -1,16 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <link href ="<c:url value="/resources/css/test.css"></c:url>" rel ='stylesheet'/>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.js" integrity="sha256-mkdmXjMvBcpAyyFNCVdbwg4v+ycJho65QLDwVE3ViDs=" crossorigin="anonymous"></script>
 <script type="text/javascript">
+
 //JQUERY
 $(function () {
 	var images = [
@@ -46,8 +47,6 @@ $(function () {
 
 </script>
 <body>
-
-
 <!-- NORMALIZED CSS INSTALLED-->
 <!-- View settings for more info.-->
 <div id="container">
@@ -60,10 +59,11 @@ $(function () {
           <div class="formDiv" style="transition-delay: 0.2s">
             <p>ID</p>
             <input type="email" required/>
+            <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "":"checked"}> 아이디 기억</label>
           </div>
           <div class="formDiv" style="transition-delay: 0.4s">
             <p>PASSWSORD</p>
-            <input type="password" required/><a class="forgotPas" href="#">FORGOT YOUR PASSWORD?</a>
+            <input type="password" required/><a class="forgotPas" href="forgotpas">FORGOT YOUR PASSWORD?</a>
           </div>
           <div class="formDiv" style="transition-delay: 0.6s">
             <button class="acceptBtn" type="submit">Login</button><span class="register">Need an account?<a href="#">Register</a></span>
@@ -73,8 +73,5 @@ $(function () {
     </div>
   </div>
 </div>
-
-
-
 </body>
 </html>
