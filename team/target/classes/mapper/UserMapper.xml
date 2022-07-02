@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.proj.team.DAO.UserMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<select id="selectUser" resultType="UserDTO" >
-SELECT COUNT(*)
-FROM B_USER
-WHERE U_ID = #{u_id}
-	AND U_PASS = #{u_pass}
+<mapper namespace="com.proj.team.dao.UserMapper">
 
+ <select id="selectAll" resultType="UserDto">
+ 	SELECT U_ID,U_PASS 
+ 	FROM B_USER
+ </select>
+
+<select id="select" parameterType="UserDto" resultType="UserDto">
+	SELECT U_ID,U_PASS 
+ 	FROM B_USER
+ 	WHERE U_ID=#{u_id} 
+ 	AND U_PASS=#{u_pass}
 </select>
 
-<select id="">
 
-</select>
-
-<insert id="">
-
-</insert>
-
-<delete id="">
-
-</delete>
-
-<update id="">
-
-</update>
 
 
 </mapper>

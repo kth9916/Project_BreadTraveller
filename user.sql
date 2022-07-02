@@ -12,8 +12,11 @@ u_profile varchar2 (40) default 'none' not null,    -- 프로필 사진
 point number default 0 not null,                    -- 포인트
 apoint number default 0 not null,                   -- 누적 포인트
 u_date date default sysdate not null,                -- 가입일
-like varchar2 null,                                   -- 좋아요 게시물?
+likes varchar2(2000) null,                                   -- 좋아요 게시물?
 question varchar2(1000) not null,                    -- 아이디 찾기용 질문
 answer varchar2 (1000) not null                        -- 답변
 );
+insert into b_user (u_num, u_id,u_pass,email,phone,nick,address,post,u_name,likes,question,answer)
+values(2,'a','a','a','a','a','a','a','a','a','a','a');
 select * from b_user;
+commit;

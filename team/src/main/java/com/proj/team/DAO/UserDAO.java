@@ -1,9 +1,14 @@
-package com.proj.team.DAO;
+package com.proj.team.dao;
 
-import com.proj.team.DTO.UserDTO2;
+import java.util.List;
 
-public interface UserDAO {
+import com.proj.team.domain.UserDto;
 
-	int selectUserDTO(UserDTO2 dto) throws Exception;
-	
+public interface UserDao {
+
+	List<UserDto> selectAll();
+
+	UserDto select(UserDto dto);
+
+
 }
