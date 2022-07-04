@@ -22,28 +22,17 @@ answer varchar2 (4000) not null                     -- ´äº¯
 );
 
 INSERT INTO b_user(U_NUM,U_ID,U_PASS,u_EMAIL,u_PHONE,u_birth, u_NICK,u_gender, u_ADDRESS,u_POST,U_NAME,QUESTION,ANSWER)
-VALUES (99,'a','a','a','a','a','a','a','a','a','a','a','a');
+VALUES (1,'a','a','a','a','a','a','a','a','a','a','a','a');
 
 
 	SELECT COUNT(U_ID)
  	FROM b_user
  	WHERE U_ID=#{u_id} 
- 	AND U_PASS=#{u_pass};
+ 	AND U_PASS=#{u_pass}
 
 drop table b_user;
-drop sequence u_num;
+
 create sequence u_num
     increment by 1
     start with 1
     nocache;
-drop table b_user;
-
-select * from b_user;
-
-commit;
-
-
-    	SELECT count(*)
- 	FROM B_USER
- 	WHERE U_ID='b' 
- 	AND U_PASS='n';

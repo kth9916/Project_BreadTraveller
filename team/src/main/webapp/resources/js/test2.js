@@ -78,6 +78,25 @@ $(".previous").click(function(){
 });
 
 $(".submit").click(function(){
-  return false;
+	$('#msform').submit();
+	
 })
 
+/*인증번호 이메일 전송*/
+$(".mail_check_button").click(function(){
+	
+	var email = $(".mail_input").val(); //입력한 이메일
+	var ckBox = $(".mail_check_input"); //인증번호 입력란
+	var boxWrap = $(".mail_check_input_box"); //인증번호 입련란 박스
+	
+	$.ajax({
+		
+		type:"GET",
+		url:"user/mailCheck?email=" + email,
+		success:function(data){
+			
+			//console.log("data : "+ data);
+		}
+	});
+});
+ 

@@ -3,17 +3,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.proj.team.dao.UserMapper">
-
- <select id="selectAll" resultType="UserDto">
- 	SELECT U_NUM,U_ID,U_PASS,EMAIL,
- 		   GRADE,PHONE,NICK,ADDRESS,
- 		   POST,U_NAME,U_PROFILE,POINT,
- 		   APOINT,U_DATE,LIKES,
+<!-- 
+ <select id="selectAll" resultType="UserDTO">
+ 	SELECT U_NUM,U_ID,U_PASS,U_EMAIL,
+ 		   U_GRADE,U_PHONE,U_BIRTH,
+ 		   U_NICK,U_GENDER,U_ADDRESS,
+ 		   U_POST,U_NAME,U_PROFILE,POINT,
+ 		   APOINT,U_DATE,LIKESSTORE,LIKESBOARD,
  		   QUESTION,ANSWER
  	FROM B_USER
  </select>
+ -->
 
-<select id="select" parameterType="UserDto" resultType="UserDto">
+<select id="select" parameterType="UserDTO" resultType="UserDTO">
 	SELECT U_ID, U_PASS
  	FROM B_USER
  	WHERE U_ID=#{u_id} 
@@ -21,8 +23,8 @@
 </select>
 
 <insert id="insertUser">
-	INSERT INTO B_USER(U_NUM,U_ID,U_PASS,EMAIL,PHONE,NICK,ADDRESS,POST,U_NAME,QUESTION,ANSWER)
-	VALUES (U_NUM.nextval,#{u_id},#{u_pass},#{email},#{phone},#{nick},#{address},#{post},#{u_name},#{question},#{answer})
+	INSERT INTO B_USER(U_NUM,U_ID,U_PASS,U_EMAIL,U_PHONE,U_BIRTH,U_NICK,U_GENDER,U_ADDRESS,U_POST,U_NAME,QUESTION,ANSWER)
+	VALUES (U_NUM.nextval,#{u_id},#{u_pass},#{u_email},#{u_phone},#{u_birth},#{u_nick},#{u_gender},#{u_address},#{u_post},#{u_name},#{question},#{answer})
 	
 </insert>
 
@@ -55,7 +57,28 @@
 	WHERE U_ID = #{u_id}
 </update>
 
+<!-- Admin 관리 페이지
+-->
 
+
+<select resultType="UserDTO" id="selectAll">SELECT *FROM b_user </select>
+
+<!-- 로그인 페이지 -->
+
+
+<select resultType="int" id="check" parameterType="String">
+	SELECT COUNT(*)
+	FROM b_user
+	WHERE U_ID=#{u_id} AND U_PASS=#{u_pass}
+ </select>
+
+<select resultType="UserDTO" id="login" parameterType="UserDTO">
+	 SELECT * 
+	 FROM b_user
+	 WHERE U_ID=#{u_id} AND U_PASS=#{u_pass} 
+ </select>
+
+<!-- -->
 
 
 </mapper>

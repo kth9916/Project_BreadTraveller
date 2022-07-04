@@ -3,15 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 </head>
 
 <!-- multistep form -->
-<form id="msform">
+<form id="msform" action="<c:url value="/user/register" />" method="post">
   <!-- progressbar -->
   <ul id="progressbar">
     <li class="active">Account Setup</li>
@@ -24,28 +25,42 @@
     <h3 class="fs-subtitle">STEP 1</h3>
     <input type="text" name="u_name" placeholder="Name" />
     <input type="text" name="u_id" placeholder="ID" />
-    <input type="password" name="u_pass" placeholder="Password" />
-    <input type="password" name="cpass" placeholder="Confirm Password" />
+    <input type="password" name="u_pass" placeholder="Password" autoComplete="off"/>
+    <input type="password" name="cpass" placeholder="Confirm Password" autoComplete="off"/>
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Social Profiles</h2>
     <h3 class="fs-subtitle">Your presence on the social network</h3>
-    <input type="text" name="nick" placeholder="NickName" />
-    <input type="text" name="post" placeholder="Post" />
-    <input type="text" name="address" placeholder="Address" />
+    <input type="text" name="u_nick" placeholder="NickName" />
+    <input type="radio" name ="u_gender" id="male" style="display: inline;">
+    <label for="male">남자</label>
+    <input type="radio" name ="u_gender" id="female">
+    <label for="female">여자</label>
+    <input type ="date" name = "u_birth" placeholder="bitrh">
+    <input type="text" name="u_post" placeholder="Post" />
+    <input type="text" name="u_address" placeholder="Address" />
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Personal Details</h2>
     <h3 class="fs-subtitle">We will never sell it</h3>
-    <input type="text" name="phone" placeholder="Phone" />
-    <input type="text" name="email" placeholder="Email" />
+    <input type="text" name="u_phone" placeholder="Phone" />
+    <input type="text" name="u_email" placeholder="Email" class ="mail_input"/>
+    <div class="mail_check_input_box" id ="mail_check_input_hox_false">
+    <input class ="mail_check_input" disabled="disabled" />
+    </div>
+    <div>
+    <button type ="button" name="email3" class="mail_check_button">인증번호 전송</button>
+    </div>
     <input type="text" name="question" placeholder="Question" />
     <input type="text" name="answer" placeholder="Answer" />
     <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="submit" name="submit" class="submit action-button" value="Submit" />
+   <!-- 
+    <button type ="button" name ="submit" class="submit action-button">Submit</button>
+    -->
+    <input type ="submit" class="submit action-button" value ="SubmitInput" id ="submit"> 
   </fieldset>
 </form>
 

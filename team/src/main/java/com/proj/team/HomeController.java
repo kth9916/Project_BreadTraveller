@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.proj.team.domain.UserDto;
+import com.proj.team.domain.UserDTO;
 
 /**
  * Handles requests for the application home page.

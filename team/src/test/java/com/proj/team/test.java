@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.proj.team.dao.UserDao;
-import com.proj.team.domain.UserDto;
+import com.proj.team.dao.UserDAO;
+import com.proj.team.domain.UserDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml" })
@@ -20,23 +20,23 @@ public class test {
 
 	
 	@Autowired
-	UserDao userDao;
+	UserDAO userDao;
 	
 	
 	@Test
-	public void selectAll() {
-		List<UserDto> list =userDao.selectAll();
+	public void selectAll() throws Exception{
+		List<UserDTO> list =userDao.selectAll() ;
 		System.out.println(list);
 	}
 
 	@Test
-	public void select() {
-		UserDto dto = new UserDto();
-		dto.setU_Id("a");
-		dto.setU_Pass("a");
+	public void select() throws Exception{
+		UserDTO dto = new UserDTO();
+		dto.setU_id("a");
+		dto.setU_pass("a");
 				
 		System.out.println("A"+dto);
-		UserDto dto2 = userDao.select(dto);
+		UserDTO dto2 = userDao.select(dto);
 		System.out.println(dto2);
 		assertTrue(dto2.equals(dto));
 
