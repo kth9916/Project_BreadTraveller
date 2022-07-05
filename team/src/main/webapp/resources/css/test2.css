@@ -21,7 +21,7 @@ body {
 /*form styles*/
 #msform {
   width: 400px;
-  margin: 50px auto;
+  margin: 30vh auto auto auto;
   text-align: center;
   position: relative;
 }

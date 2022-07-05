@@ -14,25 +14,25 @@ import lombok.ToString;
 public class UserDTO {
 	
 	public int u_num		;		//primary key
-	public String u_id      ;          //À¯Àú¾ÆÀÌµğ À¯´ÏÅ©Å°?
-	public String u_pass    ;          //ºñ¹Ğ¹øÈ£
-	public String u_email   ;          //ÀÌ¸ŞÀÏ
-	public String u_grade   ;       	//µî±Ş
-	public String u_phone   ;          //ÇÚµåÆù
-	public String u_birth   ;          //»ıÀÏ
-	public String u_nick    ;         	//´Ğ³×ÀÓ
-	public String u_gender  ;       	//¼ºº°
-	public String u_address ;          //ÁÖ¼Ò
-	public String u_post    ;          //¿ìÆí¹øÈ£
-	public String u_name    ;          //ÀÌ¸§
-	public String u_profile ;   		//ÇÁ·ÎÇÊ »çÁø
-	public int point     ;          //Æ÷ÀÎÆ®
-	public int apoint    ;          //´©Àû Æ÷ÀÎÆ®
+	public String u_id      ;          //ìœ ì € ì•„ì´ë””
+	public String u_pass    ;          //ë¹„ë°€ë²ˆí˜¸
+	public String u_email   ;          //ì´ë©”ì¼
+	public String u_grade   ;       	//ë“±ê¸‰
+	public String u_phone   ;          //í•¸ë“œí°
+	public String u_birth   ;          //ìƒì¼
+	public String u_nick    ;         	//ë‹‰ë„¤ì„
+	public String u_gender  ;       	//ì„±ë³„
+	public String u_address ;          //ì£¼ì†Œ
+	public String u_post    ;          //ìš°í¸ë²ˆí˜¸
+	public String u_name    ;          //ì´ë¦„
+	public String u_profile ;   		//í”„ë¡œí•„ ì‚¬ì§„
+	public int point     ;          //í¬ì¸íŠ¸
+	public int apoint    ;          //ëˆ„ì  í¬ì¸íŠ¸
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	public Date u_date    ;       	//°¡ÀÔÀÏ
-	public String likesStore     ;          //ÁÁ¾Æ¿ä »óÁ¡
-	public String likesBoard     ;          //ÁÁ¾Æ¿ä °Ô½Ã±Û
-	public String question  ;          //¾ÆÀÌµğ Ã£±â¿ë Áú¹®
-	public String answer    ;          //´äº¯
+	public Date u_date    ;       	//ê°€ì…ì¼
+	public String likesStore     ;          //ì¢‹ì•„ìš” ìŠ¤í† ì–´
+	public String likesBoard     ;          //ì¢‹ì•„ìš” ê²Œì‹œíŒ
+	public String question  ;          // ì•„ì´ë”” ì°¾ê¸° ì§ˆë¬¸
+	public String answer    ;          //ëŒ€ë‹µ
 }
 
