@@ -33,20 +33,20 @@ public class UserController {
 		
 	@Autowired
 	JavaMailSender mailSender;
-	// 1. Login ¸µÅ© ´­·¶À» ¶§
+	// 1. Login ë§í¬ ëˆŒë €ì„ ë•Œ
 	@RequestMapping (value = "/login", method = RequestMethod.GET)
 	public String loginForm(HttpServletRequest request) {
 		return "login";
 	}
 	
-	// 2. Login Æû¿¡¼­ Àü¼Û ÇßÀ» ¶§
+	// 2. Login í¼ì—ì„œ ì „ì†¡ í–ˆì„ ë•Œ
 	@RequestMapping (value = "/login", method = RequestMethod.POST)
 	public String login(UserDTO dto, String toURL, boolean rememberId, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) {
 		
 		try {
 			UserDTO user = userService.login(dto);
 			if(user==null) {
-				rttr.addFlashAttribute("msg","id ¶Ç´Â password°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+				rttr.addFlashAttribute("msg","id ë˜ëŠ” passwordê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				
 				return "redirect:/user/login";
 			}else {
@@ -62,7 +62,7 @@ public class UserController {
 					cookie.setMaxAge(0);
 					response.addCookie(cookie);
 				}
-				System.out.println("·Î±×ÀÎ ¼º°ø");
+				System.out.println("ë¡œê·¸ì¸ ì„±ê³µ");
 			}
 		}catch(Exception e) {
 			
@@ -72,21 +72,21 @@ public class UserController {
 		
 	}
 	
-	// 3. ·Î±×¾Æ¿ô
+	// 3. ë¡œê·¸ì•„ì›ƒ
 	@RequestMapping (value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
 	
-	// 4. È¸¿ø°¡ÀÔ ÆäÀÌÁö ÀÌµ¿
+	// 4. íšŒì›ê°€ì… í˜ì´ì§€ ì´ë™
 	@RequestMapping (value = "/register", method = RequestMethod.GET)
 	public String register() {
 		
 		return "register";
 	}
 	
-	// 5. È¸¿ø°¡ÀÔ
+	// 5. íšŒì›ê°€ì…
 	@RequestMapping (value = "/register", method = RequestMethod.POST)
 	public String registerPost(UserDTO dto) {
 		
@@ -99,26 +99,26 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	//ÀÌ¸ŞÀÏ Àü¼Û
+	//ì´ë©”ì¼ ì „ì†¡
 	@RequestMapping(value ="/mailCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String mailCheckGET(String email) throws Exception{
 		
-		//ºä·ÎºÎÅÍ ³Ñ¾î¿Â µ¥ÀÌÅÍ È®ÀÎ
-		logger.info("ÀÌ¸ŞÀÏ µ¥ÀÌÅÍ Àü¼Û È®ÀÎ");
-		logger.info("ÀÎÁõ¹øÈ£ : " + email);
+		//ë·°ë¡œë¶€í„° ë„˜ì–´ì˜¨ ë°ì´í„° í™•ì¸
+		logger.info("ì´ë©”ì¼ ë°ì´í„° ì „ì†¡ í™•ì¸");
+		logger.info("ì¸ì¦ë²ˆí˜¸ : " + email);
 		
-		//ÀÎÁõ¹øÈ£ (³­¼ö) »ı¼º
+		//ì¸ì¦ë²ˆí˜¸ (ë‚œìˆ˜) ìƒì„±
 		Random random = new Random();
 		int checkNum = random.nextInt(888888) + 111111;
-		logger.info("ÀÎÁõ¹øÈ£"+ checkNum);
+		logger.info("ì¸ì¦ë²ˆí˜¸"+ checkNum);
 		
-		String title ="test ¸ŞÀÏ È¸¿ø°¡ÀÔ ÀÎÁõ";
-		String content = "¸ŞÀÏ Å×½ºÆ® ³»¿ë"
+		String title ="test ë©”ì¼ íšŒì›ê°€ì… ì¸ì¦";
+		String content = "ë©”ì¼ í…ŒìŠ¤íŠ¸ ë‚´ìš©"
 				+ "<br><br>"
-				+ "ÀÎÁõ ¹øÈ£´Â " + checkNum + "ÀÔ´Ï´Ù."
+				+ "ì¸ì¦ ë²ˆí˜¸ëŠ” " + checkNum + "ì…ë‹ˆë‹¤."
 						+ "<br>"
-						+ "ÇØ´ç ÀÎÁõ¹øÈ£¸¦ ÀÎÁõ¹øÈ£ È®ÀÎ¶õ¿¡ ±âÀÔÇÏ¿© ÁÖ¼¼¿ä";
+						+ "í•´ë‹¹ ì¸ì¦ë²ˆí˜¸ë¥¼ ì¸ì¦ë²ˆí˜¸ í™•ì¸ë€ì— ê¸°ì…í•˜ì—¬ ì£¼ì„¸ìš”";
 		String setFrom ="modddl96@naver.com";
 		String toMail = email;
 		

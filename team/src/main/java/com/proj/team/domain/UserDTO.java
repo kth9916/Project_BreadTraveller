@@ -13,26 +13,28 @@ import lombok.ToString;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString	
 public class UserDTO {
 	
-	public int u_num		;		//primary key
-	public String u_id      ;          //À¯Àú¾ÆÀÌµğ À¯´ÏÅ©Å°?
-	public String u_pass    ;          //ºñ¹Ğ¹øÈ£
-	public String u_email   ;          //ÀÌ¸ŞÀÏ
-	public String u_grade   ;       	//µî±Ş
-	public String u_phone   ;          //ÇÚµåÆù
-	public String u_birth   ;          //»ıÀÏ
-	public String u_nick    ;         	//´Ğ³×ÀÓ
-	public String u_gender  ;       	//¼ºº°
-	public String u_address ;          //ÁÖ¼Ò
-	public String u_post    ;          //¿ìÆí¹øÈ£
-	public String u_name    ;          //ÀÌ¸§
-	public String u_profile ;   		//ÇÁ·ÎÇÊ »çÁø
-	public int point     ;          //Æ÷ÀÎÆ®
-	public int apoint    ;          //´©Àû Æ÷ÀÎÆ®
+	private int u_num		;		//primary key
+	private String u_id      ;          //ìœ ì €ì•„ì´ë”” ìœ ë‹ˆí¬í‚¤?
+	private String u_pass    ;          //ë¹„ë°€ë²ˆí˜¸
+	private String u_email   ;          //ì´ë©”ì¼
+	private String u_grade   ;       	//ë“±ê¸‰
+	private String u_phone   ;          //í•¸ë“œí°
+	private String u_birth   ;          //ìƒì¼
+	private String u_nick    ;         	//ë‹‰ë„¤ì„
+	private String u_gender  ;       	//ì„±ë³„
+	private String u_address ;          //ì£¼ì†Œ
+	private String u_post    ;          //ìš°í¸ë²ˆí˜¸
+	private String u_name    ;          //ì´ë¦„
+	private String u_profile ;   		//í”„ë¡œí•„ ì‚¬ì§„
+	private int point     ;          //í¬ì¸íŠ¸
+	private int apoint    ;          //ëˆ„ì  í¬ì¸íŠ¸
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	public Date u_date    ;       	//°¡ÀÔÀÏ
-	public String likesStore     ;          //ÁÁ¾Æ¿ä »óÁ¡
-	public String likesBoard     ;          //ÁÁ¾Æ¿ä °Ô½Ã±Û
-	public String question  ;          //¾ÆÀÌµğ Ã£±â¿ë Áú¹®
-	public String answer    ;          //´äº¯
+	private Date u_date    ;       	//ê°€ì…ì¼
+	private String likesStore     ;          //ì¢‹ì•„ìš” ìƒì 
+	private String likesBoard     ;          //ì¢‹ì•„ìš” ê²Œì‹œê¸€
+	private String question  ;          //ì•„ì´ë”” ì°¾ê¸°ìš© ì§ˆë¬¸
+	private String answer    ;          //ë‹µë³€
+
+	
 }
 

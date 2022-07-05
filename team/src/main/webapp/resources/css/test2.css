@@ -1,5 +1,5 @@
 /*custom font*/
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
 
 /*basic reset*/
 * {
@@ -12,7 +12,9 @@ html {
   /*Image only BG fallback*/
 
   /*background = gradient + image pattern combo*/
-  background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+  background:url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg")no-repeat center center fixed;
+  background-size:cover;
+  
 }
 
 body {
@@ -21,7 +23,7 @@ body {
 /*form styles*/
 #msform {
   width: 400px;
-  margin: 50px auto;
+  margin: 15vh auto auto auto;
   text-align: center;
   position: relative;
 }
@@ -43,15 +45,20 @@ body {
   display: none;
 }
 /*inputs*/
-#msform input,
-#msform textarea {
+#msform input[type=text],
+#msform input[type=submit],
+#msform input[type=password],
+#msform input[type=button],
+#msform input[type=date],
+#msform textarea,
+#msform select {
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  font-family: montserrat;
+  font-family: 'Nanum Myeongjo', serif;
   color: #2c3e50;
   font-size: 13px;
 }
@@ -149,3 +156,74 @@ body {
 #mail_check_input_box_true{
 	background-color: white;
 }
+.correct{
+	color : green;
+}
+.incorrect{
+	color : red;
+}
+/*
+.form-control {
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+  justify-content: start;
+  align-items: baseline;
+  justify-items: start;
+  margin: 10px;
+}
+
+input[type=radio] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+input[type=radio] {
+  display: grid;
+  place-content: center;
+}
+
+input[type=radio]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em green;
+}
+
+input[type=radio]:checked::before {
+  transform: scale(1);
+}
+
+input[type=radio]::before {
+
+  background-color: CanvasText;
+}
+
+input[type=radio]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+.form-control:focus-within {
+  color: green;
+}
+*/
