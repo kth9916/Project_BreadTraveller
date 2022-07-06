@@ -63,11 +63,7 @@ String u_id ="";
     <div class="logoContainer"><img class="text" src="<c:url value="/resources/images/breadLogo.png"></c:url>"/></div>
     <div class="acceptContainer">
       <form action="<c:url value="/user/login" />" method="post" onsubmit="return formCheck(this);">
-<<<<<<< HEAD
-        <h1>WELCOME BACK!</h1>
-=======
         <h1>어서 오세요!</h1>
->>>>>>> gyh
         <div id="msg">
             <c:if test="${not empty msg}">
                 <i class="fa fa-exclamation-circle"> ${msg}</i>

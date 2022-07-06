@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService{
 	public void insertUser(UserDTO dto) throws Exception{
 		userDAO.insertUser(dto);
 	}
+	
+	@Override
+	public int check(String u_id)throws Exception {
+		return userDAO.check(u_id);
+	}
 }

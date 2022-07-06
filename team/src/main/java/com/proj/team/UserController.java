@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,7 +47,8 @@ public class UserController {
 		try {
 			UserDTO user = userService.login(dto);
 			if(user==null) {
-				rttr.addFlashAttribute("msg","id 또는 password가 일치하지 않습니다.");				
+				rttr.addFlashAttribute("msg","id 또는 password가 일치하지 않습니다.");
+				
 				return "redirect:/user/login";
 			}else {
 				HttpSession session = request.getSession();
@@ -86,7 +88,6 @@ public class UserController {
 	}
 	
 	// 5. 회원가입
-
 	@RequestMapping (value = "/register", method = RequestMethod.POST)
 	public String registerPost(UserDTO dto) {
 		
@@ -98,7 +99,7 @@ public class UserController {
 		
 		return "redirect:/";
 	}
-
+	
 	//이메일 전송
 	@RequestMapping(value ="/mailCheck", method = RequestMethod.GET)
 	@ResponseBody
@@ -119,7 +120,6 @@ public class UserController {
 				+ "인증 번호는 " + checkNum + "입니다."
 						+ "<br>"
 						+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요";
-		
 		String setFrom ="modddl96@naver.com";
 		String toMail = email;
 		
@@ -141,5 +141,20 @@ public class UserController {
 			String num = Integer.toString(checkNum);
 			
 			return num;
+	}
+	@RequestMapping(value="/ckid",method =RequestMethod.POST)
+	public int ckid(String u_id, Model model) {
+		int data = 0 ;
+		System.out.println(u_id);
+		try {
+		
+			data =	userService.check(u_id);
+		System.out.println(userService.check(u_id));
+		System.out.println(data);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("data", data);
+		return data;
 	}
 }

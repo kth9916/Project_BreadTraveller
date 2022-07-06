@@ -20,13 +20,8 @@ public class MailTestController {
 	@Test
 	public void mailSendTest() throws Exception{
 		
-<<<<<<< HEAD
-		String subject ="test ¸ÞÀÏ";
-		String content = "¸ÞÀÏ Å×½ºÆ® ³»¿ë";
-=======
 		String subject ="test ë©”ì¼";
 		String content = "ë©”ì¼ í…ŒìŠ¤íŠ¸ ë‚´ìš©";
->>>>>>> gyh
 		String from ="modddl96@naver.com";
 		String to = "modddl60@naver.com";
 		

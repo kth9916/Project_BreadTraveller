@@ -3,12 +3,8 @@
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
-<<<<<<< HEAD
-
-=======
 var code = "";   
 var u_address ="";
->>>>>>> gyh
 $(".next").click(function(){
   if(animating) return false;
   animating = true;
@@ -82,9 +78,6 @@ $(".previous").click(function(){
   });
 });
 
-<<<<<<< HEAD
-$(".submit").click(function(){
-=======
 
 $(".submit").click(function(){
 
@@ -92,19 +85,13 @@ u_address =	$("#address").val()+" "+$("#detailAddress").val() +" "+$("#extraAddr
     
 $('input[name=u_address]').attr('value',u_address);
 
->>>>>>> gyh
 	$('#msform').submit();
 	
 })
 
-<<<<<<< HEAD
-/*인증번호 이메일 전송*/
-$(".mail_check_button").click(function(){
-=======
 
 /*인증번호 이메일 전송*/
 $(".email3").click(function(){
->>>>>>> gyh
 	
 	var email = $(".mail_input").val(); //입력한 이메일
 	var ckBox = $(".mail_check_input"); //인증번호 입력란
@@ -117,18 +104,13 @@ $(".email3").click(function(){
 		success:function(data){
 			
 			//console.log("data : "+ data);
-<<<<<<< HEAD
-=======
 			ckBox.attr("disabled",false);
 			boxWrap.attr("id", "mail_check_input_box_true");
 			code = data;
->>>>>>> gyh
 		}
 	});
 });
  
-<<<<<<< HEAD
-=======
  //인증번호 비교
 $(".mail_check_input").blur(function(){
 	var inputCode = $(".mail_check_input").val();        // 입력코드    
@@ -190,5 +172,33 @@ function sample6_execDaumPostcode() {
             }
         }).open();
     }
-
->>>>>>> gyh
+    
+//[ID중복확인]버튼을 클릭하면 자동실행
+	//입력한 아이디 값을 갖고 confirmId.jsp페이지 실행
+	$(".idck").click(function(){
+	  if($("#u_id").val()){
+		//아이디를 입력하고 [ID중복확인]버튼을 클릭한 경우
+		var u_id = $("#u_id").val();
+		
+	    $.ajax({
+	    	type:"POST",//요청방식
+	    	url:"ckid",//요청페이지
+	    	data: "u_id=" + u_id,
+	    	success:function(data){//요청페이지 처리에 성공시
+	    		if(data == 1){//사용할 수 없는 아이디
+	    			alert("사용할 수 없는 아이디");
+	    	    	$("#u_id").val("");
+	    	    	$("#u_id").focus();
+	    	    	return false;
+	    	     }else if(data == -1)//사용할 수 있는 아이디
+	    	  	    idck = true;	    	  	    
+	    	  	    //alert(idck);
+	    	  	    alert("사용할 수 있는 아이디");
+	    	  	    
+	 	    }
+	    });
+	  }else{//아이디를 입력하지 않고 [ID중복확인]버튼을 클릭한 경우
+		  alert("사용할 아이디를 입력");
+		  $("#u_id").focus();
+	  }
+	});

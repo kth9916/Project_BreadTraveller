@@ -34,5 +34,7 @@ public class UserDTO {
 	private String likesBoard     ;          //좋아요 게시글
 	private String question  ;          //아이디 찾기용 질문
 	private String answer    ;          //답변
+
+	
 }
 
