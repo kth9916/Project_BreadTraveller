@@ -3,47 +3,97 @@
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
-var code = "";   
+var code = "";
+var inputCode ="";   
 var u_address ="";
-$(".next").click(function(){
-  if(animating) return false;
-  animating = true;
-  
-  current_fs = $(this).parent();
-  next_fs = $(this).parent().next();
-  
-  //activate next step on progressbar using the index of next_fs
-  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-  
-  //show the next fieldset
-  next_fs.show(); 
-  //hide the current fieldset with style
-  current_fs.animate({opacity: 0}, {
-    step: function(now, mx) {
-      //as the opacity of current_fs reduces to 0 - stored in "now"
-      //1. scale current_fs down to 80%
-      scale = 1 - (1 - now) * 0.2;
-      //2. bring next_fs from the right(50%)
-      left = (now * 50)+"%";
-      //3. increase opacity of next_fs to 1 as it moves in
-      opacity = 1 - now;
-      current_fs.css({
-        'transform': 'scale('+scale+')',
-        'position': 'absolute'
-      });
-      next_fs.css({'left': left, 'opacity': opacity});
-    }, 
-    duration: 800, 
-    complete: function(){
-      current_fs.hide();
-      animating = false;
-    }, 
-    //this comes from the custom easing plugin
-    easing: 'easeInOutBack'
-  });
+let regck = true;
+let idck = false;
+
+$("#button1").click(function(){
+  checkIt1();
+  if(regck){
+	
+	  if(animating) return false;
+	  animating = true;
+	  
+	  current_fs = $(this).parent();
+	  next_fs = $(this).parent().next();
+	  
+	  //activate next step on progressbar using the index of next_fs
+	  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	  
+	  //show the next fieldset
+	  next_fs.show(); 
+	  //hide the current fieldset with style
+	  current_fs.animate({opacity: 0}, {
+	    step: function(now, mx) {
+	      //as the opacity of current_fs reduces to 0 - stored in "now"
+	      //1. scale current_fs down to 80%
+	      scale = 1 - (1 - now) * 0.2;
+	      //2. bring next_fs from the right(50%)
+	      left = (now * 50)+"%";
+	      //3. increase opacity of next_fs to 1 as it moves in
+	      opacity = 1 - now;
+	      current_fs.css({
+	        'transform': 'scale('+scale+')',
+	        'position': 'absolute'
+	      });
+	      next_fs.css({'left': left, 'opacity': opacity});
+	    }, 
+	    duration: 800, 
+	    complete: function(){
+	      current_fs.hide();
+	      animating = false;
+	    }, 
+	    //this comes from the custom easing plugin
+	    easing: 'easeInOutBack'
+	  });
+  }
+});
+
+$("#button2").click(function(){
+  checkIt2();
+  if(regck){
+	  if(animating) return false;
+	  animating = true;
+	  
+	  current_fs = $(this).parent();
+	  next_fs = $(this).parent().next();
+	  
+	  //activate next step on progressbar using the index of next_fs
+	  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	  
+	  //show the next fieldset
+	  next_fs.show(); 
+	  //hide the current fieldset with style
+	  current_fs.animate({opacity: 0}, {
+	    step: function(now, mx) {
+	      //as the opacity of current_fs reduces to 0 - stored in "now"
+	      //1. scale current_fs down to 80%
+	      scale = 1 - (1 - now) * 0.2;
+	      //2. bring next_fs from the right(50%)
+	      left = (now * 50)+"%";
+	      //3. increase opacity of next_fs to 1 as it moves in
+	      opacity = 1 - now;
+	      current_fs.css({
+	        'transform': 'scale('+scale+')',
+	        'position': 'absolute'
+	      });
+	      next_fs.css({'left': left, 'opacity': opacity});
+	    }, 
+	    duration: 800, 
+	    complete: function(){
+	      current_fs.hide();
+	      animating = false;
+	    }, 
+	    //this comes from the custom easing plugin
+	    easing: 'easeInOutBack'
+	  });
+  }
 });
 
 $(".previous").click(function(){
+	
   if(animating) return false;
   animating = true;
   
@@ -81,9 +131,9 @@ $(".previous").click(function(){
 
 $(".submit").click(function(){
 
-u_address =	$("#address").val()+" "+$("#detailAddress").val() +" "+$("#extraAddress").val();
+	u_address =	$("#address").val()+" "+$("#detailAddress").val() +" "+$("#extraAddress").val();
     
-$('input[name=u_address]').attr('value',u_address);
+	$('input[name=u_address]').attr('value',u_address);
 
 	$('#msform').submit();
 	
@@ -100,7 +150,7 @@ $(".email3").click(function(){
 	$.ajax({
 		
 		type:"GET",
-		url:"user/mailCheck?email=" + email,
+		url:"mailCheck?email=" + email,
 		success:function(data){
 			
 			//console.log("data : "+ data);
@@ -113,7 +163,7 @@ $(".email3").click(function(){
  
  //인증번호 비교
 $(".mail_check_input").blur(function(){
-	var inputCode = $(".mail_check_input").val();        // 입력코드    
+	inputCode = $(".mail_check_input").val();        // 입력코드    
     var checkResult = $("#mail_check_input_box_warn");    // 비교 결과  
 	
 	if(inputCode == code){                            // 일치할 경우
@@ -178,19 +228,20 @@ function sample6_execDaumPostcode() {
 	$(".idck").click(function(){
 	  if($("#u_id").val()){
 		//아이디를 입력하고 [ID중복확인]버튼을 클릭한 경우
-		var u_id = $("#u_id").val();
+		let u_id = {u_id:$("#u_id").val()};
 		
 	    $.ajax({
 	    	type:"POST",//요청방식
 	    	url:"ckid",//요청페이지
-	    	data: "u_id=" + u_id,
+	    	data: u_id,
+	    	dataType:"json",
 	    	success:function(data){//요청페이지 처리에 성공시
 	    		if(data == 1){//사용할 수 없는 아이디
 	    			alert("사용할 수 없는 아이디");
 	    	    	$("#u_id").val("");
 	    	    	$("#u_id").focus();
 	    	    	return false;
-	    	     }else if(data == -1)//사용할 수 있는 아이디
+	    	     }else if(data == 0)//사용할 수 있는 아이디
 	    	  	    idck = true;	    	  	    
 	    	  	    //alert(idck);
 	    	  	    alert("사용할 수 있는 아이디");
@@ -202,3 +253,107 @@ function sample6_execDaumPostcode() {
 		  $("#u_id").focus();
 	  }
 	});
+
+function checkIt1() {
+	regck = true;
+	 if(!$("#u_name").val()) {//이름을 입력하지 않으면 수행
+        alert("사용자 이름을 입력하세요");
+        $("#u_name").focus();
+        regck = false;
+        return false;
+    }
+    
+    if(!$("#u_id").val()) {//아이디를 입력하지 않으면 수행
+        alert("아이디를 입력하세요");
+        $("#u_id").focus();
+        regck = false;
+        return false;//사용자가 서비스를 요청한 시점으로 돌아감
+    }
+    
+    if(!$("#u_pass").val()) {//비밀번호를 입력하지 않으면 수행
+        alert("비밀번호를 입력하세요");
+        $("#u_pass").focus();
+        regck = false;
+        return false;
+    }
+    var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*?[#?!@$%^&*-]).{6,16}$/;
+    
+    if(!pwdCheck.test(u_pass.value)) {//비밀번호가 문자/숫자 6~16자가 아닐경우 수행
+        alert("6~16자 특수문자+숫자+문자 입력");
+        u_pass.focus();
+        regck = false;
+        return false;
+    }
+    //비밀번호와 재입력비밀번호가 같지않으면 수행
+    if($("#u_pass").val() != $("#cpass").val()){
+        alert("비밀번호를 동일하게 입력하세요");
+        $("#cpass").focus();
+        regck = false;
+        return false;
+    }
+    
+    if(idck == false){
+		alert("아이디 중복체크를 해주세요");
+        regck = false;
+        idck = false;
+        return false;
+	}
+    
+}	
+
+function checkIt2() {
+	
+	regck = true;
+    if(!$("#u_nick").val()) {
+        alert("닉네임을 입력해 주세요.")
+        $("#u_nick").focus();
+        regck = false;
+        return false;
+    }
+    
+    if(!$("#u_birth").val()) {//전화번호를 입력하지 않으면 수행
+        alert("생일을 입력해 주세요.");
+        $("#u_birth").focus();
+        regck = false;
+        return false;
+    }  
+    
+    if(!$("#u_phone").val()) {//전화번호를 입력하지 않으면 수행
+        alert("전화번호를 입력하세요");
+        $("#u_phone").focus();
+        regck = false;
+        return false;
+    }  
+    if(!$("#u_email").val()) {//이메일를 입력하지 않으면 수행
+        alert("이메일을 입력하세요");
+        $("#u_email").focus();
+        regck = false;
+        return false;
+    }  
+    
+    if(!$("#mailck").val()) {//인증번호 입력하지 않거나 
+        alert("인증번호를 입력하세요.");
+        $("#mailck").focus();
+        regck = false;
+        return false;
+    }  
+    
+    if(inputCode != code) {//인증번호 값이 다르면
+        alert("인증번호를 다시 입력해주세요.");
+        $("#mailck").focus();
+        regck = false;
+        return false;
+    }
+    if(!$("#question").val()) {//인증번호 값이 다르면
+        alert("질문을 입력해주세요.");
+        $("#question").focus();
+        regck = false;
+        return false;
+    }
+    if(!$("#answer").val()) {//인증번호 값이 다르면
+        alert("답변을 입력해주세요.");
+        $("#answer").focus();
+        regck = false;
+        return false;
+    }
+}	

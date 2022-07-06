@@ -143,18 +143,16 @@ public class UserController {
 			return num;
 	}
 	@RequestMapping(value="/ckid",method =RequestMethod.POST)
-	public int ckid(String u_id, Model model) {
+	public String ckid(String u_id, Model model) {
 		int data = 0 ;
-		System.out.println(u_id);
 		try {
 		
 			data =	userService.check(u_id);
-		System.out.println(userService.check(u_id));
-		System.out.println(data);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("data", data);
-		return data;
+		
+		return "idck";
 	}
 }

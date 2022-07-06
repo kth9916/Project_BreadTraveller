@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href ="<c:url value="/resources/css/test.css"></c:url>" rel ='stylesheet'/>
+<link href ="<c:url value="/resources/css/login.css"></c:url>" rel ='stylesheet'/>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.js" integrity="sha256-mkdmXjMvBcpAyyFNCVdbwg4v+ycJho65QLDwVE3ViDs=" crossorigin="anonymous"></script>
 <script type="text/javascript">
