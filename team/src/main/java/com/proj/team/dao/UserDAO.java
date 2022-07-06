@@ -10,7 +10,7 @@ public interface UserDAO {
 
 	UserDTO select(UserDTO dto) throws Exception;
 
-	int count() throws Exception;
+	int check(String u_id) throws Exception;
 	
 	UserDTO login(UserDTO dto) throws Exception;
 	

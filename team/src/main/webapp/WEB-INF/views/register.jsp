@@ -28,10 +28,11 @@
   <fieldset>
     <h2 class="fs-title">회원 가입</h2>
     <h3 class="fs-subtitle">STEP 1</h3>
-    <input type="text" name="u_name" placeholder="이름" />
-    <input type="text" name="u_id" placeholder="아이디" />
-    <input type="password" name="u_pass" placeholder="비밀번호" autoComplete="off"/>
-    <input type="password" name="cpass" placeholder="비밀번호 확인" autoComplete="off"/>
+    <input type="text" name="u_name" id ="u_name" placeholder="이름" />
+    <input type="text" name="u_id" id ="u_id" placeholder="아이디" />
+    <input type="button" name="idck" class="idck action-button" value="아이디 중복확인" />
+    <input type="password" name="u_pass" id="u_pass" placeholder="비밀번호" autoComplete="off"/>
+    <input type="password" name="cpass" id="cpass" placeholder="비밀번호 확인" autoComplete="off"/>
     <input type="button" name="next" class="next action-button" value="다음" />
   </fieldset>
   

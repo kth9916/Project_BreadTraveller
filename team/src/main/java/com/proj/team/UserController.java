@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -140,5 +141,20 @@ public class UserController {
 			String num = Integer.toString(checkNum);
 			
 			return num;
+	}
+	@RequestMapping(value="/ckid",method =RequestMethod.POST)
+	public int ckid(String u_id, Model model) {
+		int data = 0 ;
+		System.out.println(u_id);
+		try {
+		
+			data =	userService.check(u_id);
+		System.out.println(userService.check(u_id));
+		System.out.println(data);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("data", data);
+		return data;
 	}
 }

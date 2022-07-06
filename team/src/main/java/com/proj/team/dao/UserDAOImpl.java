@@ -28,8 +28,8 @@ public class UserDAOImpl implements UserDAO {
     }
 	
 	@Override
-	public int count() throws Exception {
-		return session.selectOne(namespace +"count");
+	public int check(String u_id) throws Exception {
+		return session.selectOne(namespace +"check",u_id);
 	}
 
 

@@ -172,4 +172,33 @@ function sample6_execDaumPostcode() {
             }
         }).open();
     }
-
+    
+//[ID중복확인]버튼을 클릭하면 자동실행
+	//입력한 아이디 값을 갖고 confirmId.jsp페이지 실행
+	$(".idck").click(function(){
+	  if($("#u_id").val()){
+		//아이디를 입력하고 [ID중복확인]버튼을 클릭한 경우
+		var u_id = $("#u_id").val();
+		
+	    $.ajax({
+	    	type:"POST",//요청방식
+	    	url:"ckid",//요청페이지
+	    	data: "u_id=" + u_id,
+	    	success:function(data){//요청페이지 처리에 성공시
+	    		if(data == 1){//사용할 수 없는 아이디
+	    			alert("사용할 수 없는 아이디");
+	    	    	$("#u_id").val("");
+	    	    	$("#u_id").focus();
+	    	    	return false;
+	    	     }else if(data == -1)//사용할 수 있는 아이디
+	    	  	    idck = true;	    	  	    
+	    	  	    //alert(idck);
+	    	  	    alert("사용할 수 있는 아이디");
+	    	  	    
+	 	    }
+	    });
+	  }else{//아이디를 입력하지 않고 [ID중복확인]버튼을 클릭한 경우
+		  alert("사용할 아이디를 입력");
+		  $("#u_id").focus();
+	  }
+	});
