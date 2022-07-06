@@ -33,33 +33,20 @@ public class UserController {
 		
 	@Autowired
 	JavaMailSender mailSender;
-<<<<<<< HEAD
-	// 1. Login ¸µÅ© ´­·¶À» ¶§
-=======
 	// 1. Login ë§í¬ ëˆŒë €ì„ ë•Œ
->>>>>>> gyh
 	@RequestMapping (value = "/login", method = RequestMethod.GET)
 	public String loginForm(HttpServletRequest request) {
 		return "login";
 	}
 	
-<<<<<<< HEAD
-	// 2. Login Æû¿¡¼­ Àü¼Û ÇßÀ» ¶§
-=======
 	// 2. Login í¼ì—ì„œ ì „ì†¡ í–ˆì„ ë•Œ
->>>>>>> gyh
 	@RequestMapping (value = "/login", method = RequestMethod.POST)
 	public String login(UserDTO dto, String toURL, boolean rememberId, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) {
 		
 		try {
 			UserDTO user = userService.login(dto);
 			if(user==null) {
-<<<<<<< HEAD
-				rttr.addFlashAttribute("msg","id ¶Ç´Â password°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
-=======
-				rttr.addFlashAttribute("msg","id ë˜ëŠ” passwordê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
->>>>>>> gyh
-				
+				rttr.addFlashAttribute("msg","id ë˜ëŠ” passwordê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");				
 				return "redirect:/user/login";
 			}else {
 				HttpSession session = request.getSession();
@@ -74,11 +61,7 @@ public class UserController {
 					cookie.setMaxAge(0);
 					response.addCookie(cookie);
 				}
-<<<<<<< HEAD
-				System.out.println("·Î±×ÀÎ ¼º°ø");
-=======
 				System.out.println("ë¡œê·¸ì¸ ì„±ê³µ");
->>>>>>> gyh
 			}
 		}catch(Exception e) {
 			
@@ -88,33 +71,22 @@ public class UserController {
 		
 	}
 	
-<<<<<<< HEAD
-	// 3. ·Î±×¾Æ¿ô
-=======
 	// 3. ë¡œê·¸ì•„ì›ƒ
->>>>>>> gyh
 	@RequestMapping (value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
 	
-<<<<<<< HEAD
-	// 4. È¸¿ø°¡ÀÔ ÆäÀÌÁö ÀÌµ¿
-=======
 	// 4. íšŒì›ê°€ì… í˜ì´ì§€ ì´ë™
->>>>>>> gyh
 	@RequestMapping (value = "/register", method = RequestMethod.GET)
 	public String register() {
 		
 		return "register";
 	}
 	
-<<<<<<< HEAD
-	// 5. È¸¿ø°¡ÀÔ
-=======
 	// 5. íšŒì›ê°€ì…
->>>>>>> gyh
+
 	@RequestMapping (value = "/register", method = RequestMethod.POST)
 	public String registerPost(UserDTO dto) {
 		
@@ -126,33 +98,12 @@ public class UserController {
 		
 		return "redirect:/";
 	}
-	
-<<<<<<< HEAD
-	//ÀÌ¸ŞÀÏ Àü¼Û
-=======
+
 	//ì´ë©”ì¼ ì „ì†¡
->>>>>>> gyh
 	@RequestMapping(value ="/mailCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String mailCheckGET(String email) throws Exception{
 		
-<<<<<<< HEAD
-		//ºä·ÎºÎÅÍ ³Ñ¾î¿Â µ¥ÀÌÅÍ È®ÀÎ
-		logger.info("ÀÌ¸ŞÀÏ µ¥ÀÌÅÍ Àü¼Û È®ÀÎ");
-		logger.info("ÀÎÁõ¹øÈ£ : " + email);
-		
-		//ÀÎÁõ¹øÈ£ (³­¼ö) »ı¼º
-		Random random = new Random();
-		int checkNum = random.nextInt(888888) + 111111;
-		logger.info("ÀÎÁõ¹øÈ£"+ checkNum);
-		
-		String title ="test ¸ŞÀÏ È¸¿ø°¡ÀÔ ÀÎÁõ";
-		String content = "¸ŞÀÏ Å×½ºÆ® ³»¿ë"
-				+ "<br><br>"
-				+ "ÀÎÁõ ¹øÈ£´Â " + checkNum + "ÀÔ´Ï´Ù."
-						+ "<br>"
-						+ "ÇØ´ç ÀÎÁõ¹øÈ£¸¦ ÀÎÁõ¹øÈ£ È®ÀÎ¶õ¿¡ ±âÀÔÇÏ¿© ÁÖ¼¼¿ä";
-=======
 		//ë·°ë¡œë¶€í„° ë„˜ì–´ì˜¨ ë°ì´í„° í™•ì¸
 		logger.info("ì´ë©”ì¼ ë°ì´í„° ì „ì†¡ í™•ì¸");
 		logger.info("ì¸ì¦ë²ˆí˜¸ : " + email);
@@ -168,7 +119,7 @@ public class UserController {
 				+ "ì¸ì¦ ë²ˆí˜¸ëŠ” " + checkNum + "ì…ë‹ˆë‹¤."
 						+ "<br>"
 						+ "í•´ë‹¹ ì¸ì¦ë²ˆí˜¸ë¥¼ ì¸ì¦ë²ˆí˜¸ í™•ì¸ë€ì— ê¸°ì…í•˜ì—¬ ì£¼ì„¸ìš”";
->>>>>>> gyh
+		
 		String setFrom ="modddl96@naver.com";
 		String toMail = email;
 		

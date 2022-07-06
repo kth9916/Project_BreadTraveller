@@ -1,9 +1,5 @@
 /*custom font*/
-<<<<<<< HEAD
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-=======
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
->>>>>>> gyh
 
 /*basic reset*/
 * {
@@ -16,13 +12,9 @@ html {
   /*Image only BG fallback*/
 
   /*background = gradient + image pattern combo*/
-<<<<<<< HEAD
-  background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
-=======
   background:url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg")no-repeat center center fixed;
   background-size:cover;
  /*임시 이미지 배경*/
->>>>>>> gyh
 }
 
 body {
@@ -31,11 +23,7 @@ body {
 /*form styles*/
 #msform {
   width: 400px;
-<<<<<<< HEAD
-  margin: 50px auto;
-=======
   margin: 15vh auto auto auto;
->>>>>>> gyh
   text-align: center;
   position: relative;
 }
@@ -57,10 +45,6 @@ body {
   display: none;
 }
 /*inputs*/
-<<<<<<< HEAD
-#msform input,
-#msform textarea {
-=======
 #msform input[type=text],
 #msform input[type=submit],
 #msform input[type=password],
@@ -68,18 +52,13 @@ body {
 #msform input[type=date],
 #msform textarea,
 #msform select {
->>>>>>> gyh
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-<<<<<<< HEAD
-  font-family: montserrat;
-=======
   font-family: 'Nanum Myeongjo', serif;
->>>>>>> gyh
   color: #2c3e50;
   font-size: 13px;
 }
@@ -176,9 +155,6 @@ body {
 }
 #mail_check_input_box_true{
 	background-color: white;
-<<<<<<< HEAD
-}
-=======
 }
 .correct{
 	color : green;
@@ -186,4 +162,3 @@ body {
 .incorrect{
 	color : red;
 }
->>>>>>> gyh

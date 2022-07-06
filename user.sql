@@ -1,71 +1,23 @@
 create table b_user(
 u_num number not null primary key,                  -- primary key
-u_id varchar2 (30) not null UNIQUE,                 -- À¯Àú¾ÆÀÌµğ À¯´ÏÅ©Å°?
-u_pass varchar2 (30) not null,                      -- ºñ¹Ğ¹øÈ£
-<<<<<<< HEAD
-email varchar2 (40) not null,                       -- ÀÌ¸ŞÀÏ
-grade varchar2 (20) default '1' not null,           -- µî±Ş
-phone varchar2 (20) not null,                       -- ÇÚµåÆù
-nick varchar2 (20) not null,                        -- ´Ğ³×ÀÓ
-address varchar2(4000) not null,                    -- ÁÖ¼Ò
-post varchar2 (400) not null,                       -- ¿ìÆí¹øÈ£
-=======
-u_email varchar2 (40) not null,                       -- ÀÌ¸ŞÀÏ
-u_grade varchar2 (20) default '1' not null,           -- µî±Ş
-u_phone varchar2 (20) not null,                       -- ÇÚµåÆù
-u_birth varchar2(200) not null,                         -- »ıÀÏ
-u_nick varchar2 (20) not null,                        -- ´Ğ³×ÀÓ
-u_gender varchar2 (20) null,                      -- ¼ºº°
-u_address varchar2(4000) null,                    -- ÁÖ¼Ò
-u_post varchar2 (400) null,                       -- ¿ìÆí¹øÈ£
->>>>>>> gyh
-u_name varchar2 (20) not null,                      -- ÀÌ¸§
-u_profile varchar2 (40) default 'sample.jpg' not null,    -- ÇÁ·ÎÇÊ »çÁø
-point number default 0 not null,                    -- Æ÷ÀÎÆ®
-apoint number default 0 not null,                   -- ´©Àû Æ÷ÀÎÆ®
-u_date date default sysdate not null,               -- °¡ÀÔÀÏ
-<<<<<<< HEAD
-likes varchar2 (2000) null,                         -- ÁÁ¾Æ¿ä °Ô½Ã¹°?
-=======
-likesStore varchar2 (2000) null,                         -- ÁÁ¾Æ¿ä »óÁ¡
-likesBoard varchar2 (2000) null,                         -- ÁÁ¾Æ¿ä °Ô½Ã¹°
->>>>>>> gyh
-question varchar2(4000) not null,                   -- ¾ÆÀÌµğ Ã£±â¿ë Áú¹®
-answer varchar2 (4000) not null                     -- ´äº¯
+u_id varchar2 (30) not null UNIQUE,                 -- Ã€Â¯Ã€ÃºÂ¾Ã†Ã€ÃŒÂµÃ° Ã€Â¯Â´ÃÃ…Â©Ã…Â°?
+u_pass varchar2 (30) not null,                      -- ÂºÃ±Â¹ÃÂ¹Ã¸ÃˆÂ£
+u_email varchar2 (40) not null,                       -- Ã€ÃŒÂ¸ÃÃ€Ã
+u_grade varchar2 (20) default '1' not null,           -- ÂµÃ®Â±Ã
+u_phone varchar2 (20) not null,                       -- Ã‡ÃšÂµÃ¥Ã†Ã¹
+u_birth varchar2(200) not null,                         -- Â»Ã½Ã€Ã
+u_nick varchar2 (20) not null,                        -- Â´ÃÂ³Ã—Ã€Ã“
+u_gender varchar2 (20) null,                      -- Â¼ÂºÂºÂ°
+u_address varchar2(4000) null,                    -- ÃÃ–Â¼Ã’
+u_post varchar2 (400) null,                       -- Â¿Ã¬Ã†Ã­Â¹Ã¸ÃˆÂ£
+u_name varchar2 (20) not null,                      -- Ã€ÃŒÂ¸Â§
+u_profile varchar2 (40) default 'sample.jpg' not null,    -- Ã‡ÃÂ·ÃÃ‡ÃŠ Â»Ã§ÃÃ¸
+point number default 0 not null,                    -- Ã†Ã·Ã€ÃÃ†Â®
+apoint number default 0 not null,                   -- Â´Â©Ã€Ã» Ã†Ã·Ã€ÃÃ†Â®
+u_date date default sysdate not null,               -- Â°Â¡Ã€Ã”Ã€Ã
+likesStore varchar2 (2000) null,                         -- ÃÃÂ¾Ã†Â¿Ã¤ Â»Ã³ÃÂ¡
+likesBoard varchar2 (2000) null,                         -- ÃÃÂ¾Ã†Â¿Ã¤ Â°Ã”Â½ÃƒÂ¹Â°
+question varchar2(4000) not null,                   -- Â¾Ã†Ã€ÃŒÂµÃ° ÃƒÂ£Â±Ã¢Â¿Ã« ÃÃºÂ¹Â®
+answer varchar2 (4000) not null                     -- Â´Ã¤ÂºÂ¯
 );
 
-<<<<<<< HEAD
-drop table b_user;
-
-create sequence u_num
-    increment by 1
-    start with 1
-    nocache;
-=======
-INSERT INTO b_user(U_NUM,U_ID,U_PASS,u_EMAIL,u_PHONE,u_birth, u_NICK,u_gender, u_ADDRESS,u_POST,U_NAME,QUESTION,ANSWER)
-VALUES (99,'a','a','a','a','a','a','a','a','a','a','a','a');
-
-
-	SELECT COUNT(U_ID)
- 	FROM b_user
- 	WHERE U_ID=#{u_id} 
- 	AND U_PASS=#{u_pass};
-
-drop table b_user;
-drop sequence u_num;
-create sequence u_num
-    increment by 1
-    start with 1
-    nocache;
-drop table b_user;
-
-select * from b_user;
-
-commit;
-
-
-    	SELECT count(*)
- 	FROM B_USER
- 	WHERE U_ID='b' 
- 	AND U_PASS='n';
->>>>>>> gyh
