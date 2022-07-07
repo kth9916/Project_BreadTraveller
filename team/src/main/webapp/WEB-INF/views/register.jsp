@@ -84,7 +84,7 @@
          <input type="text" id="extraAddress" placeholder="참고항목" readonly>
      </div>   
     <input type="button" name="previous" class="previous action-button" value="이전" />
-    <input type ="button" class="submit action-button" value ="회원가입" id ="submit"> 
+    <input type ="submit" class="submit action-button" value ="회원가입" id ="submit"> 
   </fieldset>
   
 </form>

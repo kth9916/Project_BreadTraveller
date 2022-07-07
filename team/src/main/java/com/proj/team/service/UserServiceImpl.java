@@ -27,4 +27,10 @@ public class UserServiceImpl implements UserService{
 	public int check(String u_id)throws Exception {
 		return userDAO.check(u_id);
 	}
+	
+	@Override
+	public UserDTO select(UserDTO dto) throws Exception{
+		return userDAO.select(dto);
+	}
+	
 }

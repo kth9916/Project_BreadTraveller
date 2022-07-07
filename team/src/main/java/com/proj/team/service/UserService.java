@@ -8,4 +8,7 @@ public interface UserService {
 	void insertUser(UserDTO dto) throws Exception;
 	
 	int check(String u_id) throws Exception;
+	
+	UserDTO select(UserDTO dto) throws Exception;
+	
 }

@@ -19,7 +19,6 @@
 	SELECT U_ID, U_PASS
  	FROM B_USER
  	WHERE U_ID=#{u_id} 
- 	AND U_PASS=#{u_pass}
 </select>
 
 <insert id="insertUser">
@@ -79,6 +78,5 @@
  </select>
 
 <!-- -->
-
 
 </mapper>

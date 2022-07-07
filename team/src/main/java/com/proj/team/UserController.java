@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,25 +46,43 @@ public class UserController {
 	public String login(UserDTO dto, String toURL, boolean rememberId, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) {
 		
 		try {
-			UserDTO user = userService.login(dto);
-			if(user==null) {
-				rttr.addFlashAttribute("msg","id 또는 password가 일치하지 않습니다.");
-				
-				return "redirect:/user/login";
-			}else {
-				HttpSession session = request.getSession();
-				session.setAttribute("u_id", user.getU_id());
-				session.setAttribute("u_pass", user.getU_pass());
-				
-				if(rememberId) {
-					Cookie cookie = new Cookie("u_id",user.getU_id());
-					response.addCookie(cookie);
+			//사용자가 입력한 pass
+			String pass = dto.getU_pass();
+			
+			//사용자가 입력한 id로 dbpass가져오기
+			UserDTO select = userService.select(dto);
+			String dbpass = select.getU_pass();
+			System.out.println(pass);
+			
+			System.out.println(dbpass);
+			
+			//dbpass 디코딩
+			byte[] decoderBytes = Base64.decodeBase64(dbpass);
+			String decodedTxt = new String(decoderBytes);
+			
+			if(decodedTxt.equals(pass)) {
+				dto.setU_pass(dbpass);
+				UserDTO user = userService.login(dto);
+			
+				if(user==null) {
+					rttr.addFlashAttribute("msg","id 또는 password가 일치하지 않습니다.");
+					
+					return "redirect:/user/login";
 				}else {
-					Cookie cookie = new Cookie("u_id",user.getU_id());
-					cookie.setMaxAge(0);
-					response.addCookie(cookie);
+					HttpSession session = request.getSession();
+					session.setAttribute("u_id", user.getU_id());
+					session.setAttribute("u_pass", user.getU_pass());
+					
+					if(rememberId) {
+						Cookie cookie = new Cookie("u_id",user.getU_id());
+						response.addCookie(cookie);
+					}else {
+						Cookie cookie = new Cookie("u_id",user.getU_id());
+						cookie.setMaxAge(0);
+						response.addCookie(cookie);
+					}
+					System.out.println("로그인 성공");
 				}
-				System.out.println("로그인 성공");
 			}
 		}catch(Exception e) {
 			
@@ -92,6 +111,11 @@ public class UserController {
 	public String registerPost(UserDTO dto) {
 		
 		try {
+			String pass = dto.getU_pass();
+			byte[] encodedBytes = Base64.encodeBase64(pass.getBytes());
+			String encodedText = new String(encodedBytes);
+			dto.setU_pass(encodedText);
+			
 			userService.insertUser(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -155,4 +179,11 @@ public class UserController {
 		
 		return "idck";
 	}
+	
+	@RequestMapping(value="/naver",method =RequestMethod.POST)
+	public String navlogin(UserDTO dto) {
+		
+		return "redirect:/";
+	}
+	
 }
