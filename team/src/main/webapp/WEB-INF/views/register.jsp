@@ -15,7 +15,7 @@
 </head>
 
 <!-- multistep form -->
-
+<body>
 <form id="msform" action="<c:url value="/user/register" />" method="post">
   
   <!-- progressbar -->

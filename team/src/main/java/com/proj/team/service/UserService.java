@@ -11,4 +11,5 @@ public interface UserService {
 	
 	UserDTO select(UserDTO dto) throws Exception;
 	
+	int checknaver(String u_email) throws Exception;
 }

@@ -16,4 +16,5 @@ public interface UserDAO {
 	
 	void insertUser(UserDTO dto) throws Exception;
 	
+	int checknaver(String u_email) throws Exception;
 }

@@ -186,4 +186,32 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="/callback",method = RequestMethod.GET)
+	public String callback(String u_email) {
+		int check = 0;
+		System.out.println("1"+check);
+		System.out.println(u_email);
+		
+		try {
+			check = userService.checknaver(u_email);
+			System.out.println(check);
+			if(check==1) {
+				System.out.println("2"+check);
+				
+				return "login";
+			
+			}else {
+				
+				System.out.println("3"+check);
+				return "naverlogin";
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		System.out.println("4"+check);
+		return "callback";
+		
+	}
 }

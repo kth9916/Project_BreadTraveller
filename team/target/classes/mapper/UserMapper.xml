@@ -71,6 +71,12 @@
 	WHERE U_ID=#{u_id}
  </select>
 
+<select resultType="int" id="checknaver" >
+	SELECT COUNT(*)
+	FROM b_user
+	WHERE U_EMAIL=#{u_email}
+ </select>
+
 <select resultType="UserDTO" id="login" parameterType="UserDTO">
 	 SELECT * 
 	 FROM b_user

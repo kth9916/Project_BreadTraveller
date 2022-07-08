@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/*basic reset*/
+* {
+ 			box-sizing: border-box;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+}
+
+html {
+ 
+  /*Image only BG fallback*/
+  /*background = gradient + image pattern combo*/
+ /*임시 이미지 배경*/
+
+/*  height: 100%;
+
+  background:url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg")no-repeat center center fixed;
+  background-size:cover;
+*/
+}
+
+img{
+	width: 180px;
+	height: 180px;
+}
+section {
+	margin-top:100px;
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+}
+
+aside{
+	padding:10px;
+	width:200px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	
+}
+main{
+	padding:10px;
+	width: 1000px;
+	height: 1000px;
+	border: 1px solid black;
+}
+
+nav div {
+	border: 1px solid red;
+}
+
+span{
+	font-size: 20px;
+	margin-top: 15px;
+}
+
+nav-div-ui-li {
+	margin: 10px;
+}

@@ -9,9 +9,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form id="msform" action="<c:url value="/user/naver" />" method="post">
+<fieldset >
+    <h2 class="fs-title">간편 가입</h2>
+    <h3 class="fs-subtitle">네이버</h3>
+    <input type="hidden" name="u_email" value="" >
+    <input type="text" name="question" id ="question" placeholder="회원가입 질문" value="" />
+    <input type="text" name="answer" id = "answer" placeholder="답변" value="" />
+    <input type="button" name="previous" class="previous action-button" value="이전" />
+    <input type ="submit" class="submit action-button" value ="회원가입" id ="submit"> 
+  </fieldset>
+</form>	
 <!-- 네이버아디디로로그인 Callback페이지 처리 Script -->
 <script type="text/javascript">
-var naver_id_login = new naver_id_login("aa", "http://localhost:9392/team/callback");
+var naver_id_login = new naver_id_login("jNJGG5c9JbzeAst9WVp9", "http://localhost:9392/team/user/callback");
 // 접근 토큰 값 출력
 alert(naver_id_login.oauthParams.access_token);
 // 네이버 사용자 프로필 조회
@@ -25,6 +36,8 @@ function naverSignInCallback() {
   alert(naver_id_login.getProfileData('id'));
   alert(naver_id_login.getProfileData('mobile'));
   alert(naver_id_login.getProfileData('name'));
+  $('input[name=question]').attr('value',naver_id_login.getProfileData('email'));
+  $('input[name=answer]').attr('value','ttttt');
   /*u_num은 자동증가컬럼,
   u_id 이메일로
   u_pass는 입력할 필요가없고

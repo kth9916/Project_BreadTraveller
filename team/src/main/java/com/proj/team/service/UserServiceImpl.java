@@ -33,4 +33,8 @@ public class UserServiceImpl implements UserService{
 		return userDAO.select(dto);
 	}
 	
+	@Override
+	public int checknaver(String u_email)throws Exception{
+		return userDAO.checknaver(u_email);
+	}
 }
