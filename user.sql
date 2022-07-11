@@ -49,3 +49,7 @@ commit;
  	FROM B_USER
  	WHERE U_ID='b' 
  	AND U_PASS='n';
+
+
+
+

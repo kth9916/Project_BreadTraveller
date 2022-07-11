@@ -182,29 +182,36 @@ public class UserController {
 	
 	@RequestMapping(value="/naver",method =RequestMethod.POST)
 	public String navlogin(UserDTO dto) {
-		
-		return "redirect:/";
-	}
+			try {
+				String pass = dto.getU_pass();
+				byte[] encodedBytes = Base64.encodeBase64(pass.getBytes());
+				String encodedText = new String(encodedBytes);
+				dto.setU_pass(encodedText);
+				
+				userService.insertUser(dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "redirect:/";
+		}
 	
-	@RequestMapping(value="/callback",method = RequestMethod.GET)
-	public String callback(String u_email) {
+	@RequestMapping(value="/callback",method = RequestMethod.GET )
+	public String callback() {
+		
+		return "callback";
+		
+	}
+	@RequestMapping(value="/callback",method = RequestMethod.POST )
+	public String callbackPost(HttpServletRequest req, String u_email) {
 		int check = 0;
 		System.out.println("1"+check);
 		System.out.println(u_email);
-		
+		System.out.println(req.getParameter("u_email"));
 		try {
 			check = userService.checknaver(u_email);
 			System.out.println(check);
-			if(check==1) {
-				System.out.println("2"+check);
-				
-				return "login";
 			
-			}else {
-				
-				System.out.println("3"+check);
-				return "naverlogin";
-			}
 		} catch (Exception e) {
 			
 			e.printStackTrace();
