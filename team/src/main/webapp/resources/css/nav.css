@@ -12,6 +12,7 @@ html, body{
   position: absolute;
   top:0;
   left: -34vw;
+  overflow: hidden;
 }
 
 body {
@@ -20,7 +21,6 @@ body {
   background: linear-gradient(77deg, #0c86ef, #e99c7e);
   font-family: "Roboto", sans-serif;
   height: 100vh;
-  overflow: hidden;
   width: 100vw;
 }
 

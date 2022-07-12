@@ -6,7 +6,7 @@ import com.proj.team.domain.UserDTO;
 
 public interface UserDAO {
 
-	List<UserDTO> selectAll() throws Exception;
+	List<UserDTO> selectAll(UserDTO dto) throws Exception;
 
 	UserDTO select(UserDTO dto) throws Exception;
 

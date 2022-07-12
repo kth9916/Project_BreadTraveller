@@ -14,9 +14,14 @@
  	FROM B_USER
  </select>
  -->
-
 <select id="select" parameterType="UserDTO" resultType="UserDTO">
-	SELECT U_ID, U_PASS
+	SELECT *
+ 	FROM B_USER
+ 	WHERE U_ID=#{u_id} 
+</select>
+
+<select id="selectId" parameterType="String" resultType="UserDTO">
+	SELECT *
  	FROM B_USER
  	WHERE U_ID=#{u_id} 
 </select>
@@ -60,7 +65,11 @@
 -->
 
 
-<select resultType="UserDTO" id="selectAll">SELECT *FROM b_user </select>
+<select resultType="UserDTO" id="selectAll">
+	SELECT *
+	FROM b_user 
+
+</select>
 
 <!-- 로그인 페이지 -->
 

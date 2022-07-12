@@ -1,5 +1,7 @@
 package com.proj.team.service;
 
+import java.util.List;
+
 import com.proj.team.domain.UserDTO;
 
 public interface UserService {
@@ -12,4 +14,6 @@ public interface UserService {
 	UserDTO select(UserDTO dto) throws Exception;
 	
 	int checknaver(String u_email) throws Exception;
+	
+	List<UserDTO> selectAll(UserDTO dto) throws Exception;
 }

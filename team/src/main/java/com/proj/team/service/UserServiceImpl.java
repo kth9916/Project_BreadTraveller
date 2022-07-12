@@ -1,5 +1,7 @@
 package com.proj.team.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -36,5 +38,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int checknaver(String u_email)throws Exception{
 		return userDAO.checknaver(u_email);
+	}
+	@Override
+	public List<UserDTO> selectAll(UserDTO dto) throws Exception{
+		return userDAO.selectAll(dto);
+		
 	}
 }

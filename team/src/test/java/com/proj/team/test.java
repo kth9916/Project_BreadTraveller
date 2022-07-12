@@ -24,8 +24,8 @@ public class test {
 	
 	
 	@Test
-	public void selectAll() throws Exception{
-		List<UserDTO> list =userDao.selectAll() ;
+	public void selectAll(UserDTO dto) throws Exception{
+		List<UserDTO> list =userDao.selectAll(dto) ;
 		System.out.println(list);
 	}
 

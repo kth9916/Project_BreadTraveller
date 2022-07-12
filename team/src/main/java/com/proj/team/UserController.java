@@ -1,5 +1,7 @@
 package com.proj.team;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -63,7 +65,7 @@ public class UserController {
 			if(decodedTxt.equals(pass)) {
 				dto.setU_pass(dbpass);
 				UserDTO user = userService.login(dto);
-			
+					
 				if(user==null) {
 					rttr.addFlashAttribute("msg","id 또는 password가 일치하지 않습니다.");
 					
@@ -71,8 +73,7 @@ public class UserController {
 				}else {
 					HttpSession session = request.getSession();
 					session.setAttribute("u_id", user.getU_id());
-					session.setAttribute("u_pass", user.getU_pass());
-					
+				
 					if(rememberId) {
 						Cookie cookie = new Cookie("u_id",user.getU_id());
 						response.addCookie(cookie);
@@ -221,4 +222,19 @@ public class UserController {
 		return "callback";
 		
 	}
+	
+	@RequestMapping(value ="/List", method = RequestMethod.GET)
+	public String getUserList(UserDTO dto, Model model,HttpServletRequest request) throws Exception {
+		String ss = (String)request.getAttribute("u_id");
+		
+		//UserDTO dto =userService.selectId(ss);
+		//넣고 model로 값가져오기
+		model.addAttribute("user",dto);
+		model.addAttribute("userList",userService.selectAll(dto));
+		
+		return "my";
+	}
+	
+	
+	
 }

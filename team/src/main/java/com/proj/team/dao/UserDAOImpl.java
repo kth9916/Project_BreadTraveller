@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO {
     private static String namespace = "com.proj.team.dao.UserMapper.";
     
     @Override
-	public List<UserDTO> selectAll(){
+	public List<UserDTO> selectAll(UserDTO dto){
     	return session.selectList(namespace+"selectAll");
     }
     

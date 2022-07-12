@@ -21,8 +21,8 @@ html {
 }
 
 img{
-	width: 180px;
-	height: 180px;
+	width: 160px;
+	height: 160px;
 }
 section {
 	margin-top:100px;
@@ -33,28 +33,60 @@ section {
 
 aside{
 	padding:10px;
-	width:200px;
+	width:220px;
 	display: flex;
 	flex-direction: column;
-	border: 1px solid black;
 	
+}
+li{
+	line-height: 50px;
 }
 main{
 	padding:10px;
 	width: 1000px;
 	height: 1000px;
-	border: 1px solid black;
 }
 
-nav div {
-	border: 1px solid red;
+.nav{
+	position: sticky;
+	top:0px;
 }
 
-span{
-	font-size: 20px;
+.nav div {
+	border: 1px solid gray;
+	padding: 20px;
+}
+
+.s1{
+	font-size: 30px;
 	margin-top: 15px;
+	font-weight: bold;
+}
+main h2 {
+	margin: 30px;
 }
 
-nav-div-ui-li {
-	margin: 10px;
+main div {
+	margin:30px;
+}
+
+.pro li {
+	text-align: center;
+	line-height: 30px;
+}
+
+.check {
+    border-top: black solid 1.5px;
+    border-bottom: black solid 1.5px;
+    background-color: ghostwhite;
+    height: 75px;
+    padding: 24px;
+}
+a {
+    vertical-align: middle;
+}
+
+.s2{
+	text-align: center;
+	font-size: 30px;
 }
