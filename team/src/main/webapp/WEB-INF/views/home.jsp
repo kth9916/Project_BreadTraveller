@@ -29,7 +29,7 @@
 	<input type="text" name="u_email" value="" >
  
 	<script type="text/javascript">
-  	var naver_id_login = new naver_id_login("jNJGG5c9JbzeAst9WVp9", "http://localhost:9392/team/user/callback");
+  	var naver_id_login = new naver_id_login("JbzeAst9WVp9", "http://localhost:9392/team/user/callback");
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("white", 2,40);
   	naver_id_login.setDomain("http://localhost:9392/team/user")

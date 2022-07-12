@@ -24,7 +24,7 @@
 
 $('input[name=u_email]').attr('value','text');
 
-var naver_id_login = new naver_id_login("jNJGG5c9JbzeAst9WVp9", "http://localhost:9392/team/user/callback");
+var naver_id_login = new naver_id_login("JbzeAst", "http://localhost:9392/team/user/callback");
 // 접근 토큰 값 출력
 alert(naver_id_login.oauthParams.access_token);
 // 네이버 사용자 프로필 조회
