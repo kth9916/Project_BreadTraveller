@@ -2,7 +2,11 @@ package com.proj.team;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Random;
+import java.util.Set;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
@@ -48,22 +52,6 @@ public class UserController {
 	public String login(UserDTO dto, String toURL, boolean rememberId, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) {
 		
 		try {
-			//사용자가 입력한 pass
-			String pass = dto.getU_pass();
-			
-			//사용자가 입력한 id로 dbpass가져오기
-			UserDTO select = userService.select(dto);
-			String dbpass = select.getU_pass();
-			System.out.println(pass);
-			
-			System.out.println(dbpass);
-			
-			//dbpass 디코딩
-			byte[] decoderBytes = Base64.decodeBase64(dbpass);
-			String decodedTxt = new String(decoderBytes);
-			
-			if(decodedTxt.equals(pass)) {
-				dto.setU_pass(dbpass);
 				UserDTO user = userService.login(dto);
 					
 				if(user==null) {
@@ -84,7 +72,6 @@ public class UserController {
 					}
 					System.out.println("로그인 성공");
 				}
-			}
 		}catch(Exception e) {
 			
 		}
@@ -112,11 +99,6 @@ public class UserController {
 	public String registerPost(UserDTO dto) {
 		
 		try {
-			String pass = dto.getU_pass();
-			byte[] encodedBytes = Base64.encodeBase64(pass.getBytes());
-			String encodedText = new String(encodedBytes);
-			dto.setU_pass(encodedText);
-			
 			userService.insertUser(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -184,11 +166,6 @@ public class UserController {
 	@RequestMapping(value="/naver",method =RequestMethod.POST)
 	public String navlogin(UserDTO dto) {
 			try {
-				String pass = dto.getU_pass();
-				byte[] encodedBytes = Base64.encodeBase64(pass.getBytes());
-				String encodedText = new String(encodedBytes);
-				dto.setU_pass(encodedText);
-				
 				userService.insertUser(dto);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -224,15 +201,33 @@ public class UserController {
 	}
 	
 	@RequestMapping(value ="/List", method = RequestMethod.GET)
-	public String getUserList(UserDTO dto, Model model,HttpServletRequest request) throws Exception {
-		String ss = (String)request.getAttribute("u_id");
-		
-		//UserDTO dto =userService.selectId(ss);
-		//넣고 model로 값가져오기
-		model.addAttribute("user",dto);
+	public String getUserList(UserDTO dto, Model model, HttpSession session) throws Exception {
+		//임시로 user 나중에 빵으로 변경
 		model.addAttribute("userList",userService.selectAll(dto));
 		
+		String ss = (String) session.getAttribute("u_id");
+
+		UserDTO dto2 =userService.selectId(ss);
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		//String dateToStr = dateFormat.format(dto2.getU_date());
+		//System.out.println(dateToStr);
+		//Date date = dateFormat.parse(dateToStr);
+		//System.out.println(date);
+		//dto2.setU_date(dateToStr);
+		//넣고 model로 값가져오기
+		model.addAttribute("user",dto2);
+		
 		return "my";
+	}
+	@RequestMapping(value ="/update", method = RequestMethod.GET)
+	public String update(UserDTO dto, Model model, HttpSession session) throws Exception {
+		
+		String ss = (String) session.getAttribute("u_id");
+
+		UserDTO dto2 =userService.selectId(ss);
+		
+		model.addAttribute("user",dto2);
+		return "update";
 	}
 	
 	

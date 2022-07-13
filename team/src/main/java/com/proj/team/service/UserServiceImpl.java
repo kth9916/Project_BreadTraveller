@@ -44,4 +44,9 @@ public class UserServiceImpl implements UserService{
 		return userDAO.selectAll(dto);
 		
 	}
+	
+	@Override
+	public UserDTO selectId(String u_id) throws Exception{
+		return userDAO.selectId(u_id);
+	}
 }

@@ -49,4 +49,9 @@ public class UserDAOImpl implements UserDAO {
 		return session.selectOne(namespace+"checknaver",u_email);
 	}
 	
+	@Override
+	public UserDTO selectId(String u_id)throws Exception{
+		return session.selectOne(namespace +"selectId",u_id);
+	}
+	
 }

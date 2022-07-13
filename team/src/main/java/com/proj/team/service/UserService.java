@@ -16,4 +16,6 @@ public interface UserService {
 	int checknaver(String u_email) throws Exception;
 	
 	List<UserDTO> selectAll(UserDTO dto) throws Exception;
+	
+	UserDTO selectId(String u_id) throws Exception;
 }

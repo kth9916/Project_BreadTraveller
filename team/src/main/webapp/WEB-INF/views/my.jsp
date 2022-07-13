@@ -13,30 +13,8 @@
 <body>
 <%@ include file="nav.jsp" %>
 <section>
-<aside>
-	<div class="nav">
-		<div class="pro">
-			<ul>
-				<li><img name="u_profile"  src="<c:url value="/resources/images/sample.jpg"></c:url>"/></li>
-				<li >${user.u_id}</li>
-				<li ></li>
-				<li ></li>
-				<li ><input type="button" value="회원 정보 수정"></li>
-			</ul>
-		</div>
-		<div>
-			<span class="s1">관심목록</span>
-		</div>	
-		<div>
-			<span class="s1">활동내역</span>
-			<ul>
-				<li>종아요한 게시물?</li>
-				<li>내가 쓴 글</li>
-				<li>내 QNA</li>
-			</ul>
-		</div>
-	</div>
-</aside>
+<%@ include file="aside.jsp" %>
+
 <main>
 	<h2>지금 누른 메뉴 제목</h2>
 	<hr>
