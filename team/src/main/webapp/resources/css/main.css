@@ -12,11 +12,11 @@
 html, body {
   font-size: 62.5%;
   height: 100%;
-  overflow: hidden;
+  
 }
 
 body {
-  background: #000;
+  overflow: hidden;
 }
 
 svg {

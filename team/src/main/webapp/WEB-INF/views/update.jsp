@@ -80,7 +80,7 @@ ul{
 <section>
 	<h2>회원 정보 수정</h2>
 	<br>
-	<form>
+	<form action="" method="post">
 	<article>
 		<div class ="ul1">
 		<img name="u_profile"  src="<c:url value="/resources/images/${user.u_profile}"></c:url>"/>
@@ -98,14 +98,6 @@ ul{
 		
 		<ul>
 			<li>생일 : <input type ="date" value="${user.u_birth}"></li>
-			<li>성별 : 
-			<select name="u_gender" >
-		     	<option value ="">성별</option>
-		     	<option value ="male">남자</option>
-		     	<option value ="female">여자</option>
-		     	<option value ="other">기타</option>
-    		 </select>
-    		 </li>
 			<li>휴대전화 : ${user.u_phone}</li>
 		</ul>
 			<input type="hidden" name ="u_address" value ="">
@@ -120,8 +112,8 @@ ul{
 		<ul>
 			<li>비밀번호 : <button>비밀번호 변경</button></li>
 			<li>이메일 : <button>이메일 변경</button></li>
-			<li>질문 : ${user.question}</li>
-			<li>답변 : ${user.answer}</li>
+			<li>질문 : <input type ="text" value="${user.question}"></li>
+			<li>답변 : <input type= "text" value="${user.answer}"></li>
 		</ul>
 	
 	</article>

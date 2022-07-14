@@ -16,6 +16,7 @@
 
 <!-- multistep form -->
 <body>
+<%@ include file="nav.jsp" %>
 <form id="msform" action="<c:url value="/user/register" />" method="post">
   
   <!-- progressbar -->

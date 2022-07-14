@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
 			<ul>
 				<li><img name="u_profile"  src="<c:url value="/resources/images/${user.u_profile}"></c:url>"/></li>
 				<li >${user.u_id}</li>
-				<li >${user.u_date}</li>
+				<li ><fmt:formatDate value="${user.u_date}" pattern="yyyy-MM-dd" type="date"/></li>
 				<li >${user.point}</li>
 				<li ><input type="button" value="회원 정보 수정" onclick="location.href='update'"></li>
 			</ul>
