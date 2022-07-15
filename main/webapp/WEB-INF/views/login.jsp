@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href ="<c:url value="/resources/css/test.css"></c:url>" rel ='stylesheet'/>
+<link href ="<c:url value="/resources/css/login.css"></c:url>" rel ='stylesheet'/>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.js" integrity="sha256-mkdmXjMvBcpAyyFNCVdbwg4v+ycJho65QLDwVE3ViDs=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -49,20 +49,17 @@ $(function () {
 
 </script>
 <body>
-<%
-String u_id ="";
-	//id세션 속성의 값을 얻어내서 id변수에 저장
-	//인증된 사용자의 경우  id세션 속성의 값 null또는 공백이 아님
-	u_id = (String)session.getAttribute("u_id");
-	
-%>
+
+<%@ include file="nav.jsp" %>
+
 <!-- NORMALIZED CSS INSTALLED-->
 <!-- View settings for more info.-->
 <div id="container">
+
   <div id="inviteContainer">
     <div class="logoContainer"><img class="text" src="<c:url value="/resources/images/breadLogo.png"></c:url>"/></div>
     <div class="acceptContainer">
-      <form action="<c:url value="/user/login" />" method="post" onsubmit="return formCheck(this);">
+      <form action="<c:url value="/login" />" method="post" onsubmit="return formCheck(this);">
         <h1>어서 오세요!</h1>
         <div id="msg">
             <c:if test="${not empty msg}">
@@ -73,16 +70,16 @@ String u_id ="";
           <div class="formDiv" style="transition-delay: 0.2s">
             <p>ID</p>
             <input type="text" name="u_id" value="${cookie.u_id.value }" autofocus required/>
-            <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.u_id.value ? "":"checked"}> 아이디 기억</label>
+            <label style="color:white;"><input type="checkbox" name="rememberId" value="on" ${empty cookie.u_id.value ? "":"checked"}> Remember</label>
           </div>
           <div class="formDiv" style="transition-delay: 0.4s">
             <p>PASSWSORD</p>
-            <input type="password" name="u_pass" required/><a class="forgotPas" href="<c:url value='user/forgotPas' />">FORGOT YOUR PASSWORD?</a>
+            <input type="password" name="u_pass" required/><a class="forgotPas" href="<c:url value='/forgotPas' />">FORGOT YOUR PASSWORD?</a>
             <input type="hidden" name="toURL" value="${param.toURL }">
           </div>
           <div class="formDiv" style="transition-delay: 0.6s">
             <button class="acceptBtn" type="submit">Login</button>
-            <span class="register">Need an account?<a href="<c:url value='/user/register' />">Register</a></span>
+            <span class="register">Need an account?<a href="<c:url value='register' />">Register</a></span>
           </div>
         </div>
    

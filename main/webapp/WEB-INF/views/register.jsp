@@ -9,11 +9,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+
+<link href ="<c:url value="/resources/css/register.css"></c:url>" rel = 'stylesheet'/>
+
 </head>
 
 <!-- multistep form -->
-
-<form id="msform" action="<c:url value="/user/register" />" method="post">
+<body>
+<%@ include file="nav.jsp" %>
+<form id="msform" action="<c:url value="/register" />" method="post">
   
   <!-- progressbar -->
   
@@ -33,27 +37,27 @@
     <input type="button" name="idck" class="idck action-button" value="아이디 중복확인" />
     <input type="password" name="u_pass" id="u_pass" placeholder="비밀번호" autoComplete="off"/>
     <input type="password" name="cpass" id="cpass" placeholder="비밀번호 확인" autoComplete="off"/>
-    <input type="button" name="next" class="next action-button" value="다음" />
+    <input type="button" name="next" class="next action-button" id ="button1" value="다음" />
   </fieldset>
   
   <fieldset>
     <h2 class="fs-title">필수 정보</h2>
     <h3 class="fs-subtitle">STEP 2</h3>
-    <input type="text" name="u_nick" placeholder="닉네임" />
-    <input type ="date" name = "u_birth" placeholder="생일">
-    <input type="text" name="u_phone" placeholder="전화번호" />
-	<input type="text" name="u_email" placeholder="이메일" class ="mail_input"/>
+    <input type="text" name="u_nick" id="u_nick" placeholder="닉네임" />
+    <input type ="date" name = "u_birth" id="u_birth" placeholder="생일">
+    <input type="text" name="u_phone" id="u_phone" placeholder="전화번호" />
+	<input type="text" name="u_email" id="u_email" placeholder="이메일" class ="mail_input"/>
        	<div class="mail_check_input_box" id ="mail_check_input_hox_false">
-   			<input type="text" class ="mail_check_input" disabled="disabled" placeholder="인증번호" />
+   			<input type="text" class ="mail_check_input" id="mailck" disabled="disabled" placeholder="인증번호" />
    		</div>
    			<span id ="mail_check_input_box_warn"></span>
    		<div>
    			<input type ="button" style ="width:250px"id ="email3" name="email3" class="email3 action-button" value ="인증번호 전송"/>
    		</div>
-    <input type="text" name="question" placeholder="회원가입 질문" />
-    <input type="text" name="answer" placeholder="답변" />
+    <input type="text" name="question" id ="question" placeholder="회원가입 질문" />
+    <input type="text" name="answer" id = "answer" placeholder="답변" />
     <input type="button" name="previous" class="previous action-button" value="이전" />
-    <input type="button" name="next" class="next action-button" value="다음" />
+    <input type="button" name="next" class="next action-button" id ="button2" value="다음" />
   </fieldset>
   
   <fieldset style ="
@@ -92,10 +96,8 @@
 
 <script src="<c:url value ="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></c:url>"></script>
 <script src="<c:url value ="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></c:url>"></script>
-
-<link href ="<c:url value="/resources/css/test2.css"></c:url>" rel = 'stylesheet'/>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src ="<c:url value="/resources/js/test2.js"></c:url>"></script>
+<script src ="<c:url value="/resources/js/register.js"></c:url>"></script>
 
 
 </body>

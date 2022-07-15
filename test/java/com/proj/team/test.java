@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.proj.team.dao.UserDAO;
-import com.proj.team.domain.UserDTO;
+import com.proj.team.UserDAO.UserDAO;
+import com.proj.team.UserDTO.UserDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml" })
@@ -24,8 +24,8 @@ public class test {
 	
 	
 	@Test
-	public void selectAll() throws Exception{
-		List<UserDTO> list =userDao.selectAll() ;
+	public void selectAll(UserDTO dto) throws Exception{
+		List<UserDTO> list =userDao.selectAll(dto) ;
 		System.out.println(list);
 	}
 

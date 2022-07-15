@@ -8,20 +8,27 @@
 }
 
 html {
-  height: 100%;
-  /*Image only BG fallback*/
-
-  /*background = gradient + image pattern combo*/
-  background:url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg")no-repeat center center fixed;
-  background-size:cover;
- /*임시 이미지 배경*/
+ height: 100%;
 }
 
 body {
   font-family: montserrat, arial, verdana;
+  background:url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg")no-repeat center center fixed;
+  background-size:cover;
+}
+
+.header1{
+	background-color: white;
+	z-index:100;
 }
 /*form styles*/
 #msform {
+	 
+  /*Image only BG fallback*/
+
+  /*background = gradient + image pattern combo*/
+  
+ /*�엫�떆 �씠誘몄� 諛곌꼍*/
   width: 400px;
   margin: 15vh auto auto auto;
   text-align: center;
