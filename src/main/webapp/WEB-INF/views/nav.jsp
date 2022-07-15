@@ -15,11 +15,11 @@
 	<nav id="log">
 	  
 	  
-		  <%
+	<%
 	  	String u_id = null;
-	  if(session.getAttribute("u_id") != null){
-		  u_id = (String) session.getAttribute("u_id");
-	  }
+		if(session.getAttribute("u_id") != null){
+			u_id = (String) session.getAttribute("u_id");
+		}
 	%>
 	
 	<%

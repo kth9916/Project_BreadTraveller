@@ -1,21 +1,13 @@
-package com.proj.team.board.dao;
+package com.proj.team.board.service;
 
-import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.proj.team.board.domain.FreeBoardVO;
 
-@Repository
-public class FreeBoardDAOImpl implements FreeBoardDAO {
-
-	@Autowired
-	SqlSession session;
-
-	private static String NAMESPACE = "com.proj.team.board.dao.FreeBoardMapper.";
+@Service
+public class FreeBoardServiceImpl implements FreeBoardService {
 
 	@Override
 	public List<FreeBoardVO> selectList() {
@@ -46,7 +38,5 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	
-
 }

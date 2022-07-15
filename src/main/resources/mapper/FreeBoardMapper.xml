@@ -11,69 +11,32 @@
  
 
 <select id="select" parameterType="FreeBoardVO" resultType="FreeBoardVO">
-	SELECT U_ID, U_PASS
- 	FROM B_USER
- 	WHERE U_ID=#{u_id} 
- 	AND U_PASS=#{u_pass}
+	SELECT F_NO, F_WRITER
+ 	FROM F_BOARD
+ 	WHERE F_NO=#{F_NO} 
+ 	AND F_WRITER=#{f_writer}
 </select>
 
-<insert id="insertUser">
-	INSERT INTO B_USER(U_NUM,U_ID,U_PASS,U_EMAIL,U_PHONE,U_BIRTH,U_NICK,U_GENDER,U_ADDRESS,U_POST,U_NAME,QUESTION,ANSWER)
-	VALUES (U_NUM.nextval,#{u_id},#{u_pass},#{u_email},#{u_phone},#{u_birth},#{u_nick},#{u_gender},#{u_address},#{u_post},#{u_name},#{question},#{answer})
+<insert id="insertBoard">
+	INSERT INTO F_BOARD(F_NO,U_ID,F_TITLE,F_CONTENT,F_WRITER,F_WDATE,F_HIT,F_REPLY)
+	VALUES (F_SEQ.nextval,#{u_id},#{f_title},#{f_content},#{u_id},systimestamp,0,0)
 	
 </insert>
 
-<delete id="deleteUser">
-	DELETE B_USER WHERE U_ID = #{u_id}
+<delete id="deleteBoard">
+	DELETE F_BOARD WHERE F_NO = #{f_no}
 
 </delete>
 
 <update id="updateAll">
-	UPDATE B_USER 
-	SET NICK = #{nick}, ADDRESS = #{address}, POST = #{post} ,QUESTION =#{question}, ANSWER = #{answer}
-	WHERE U_ID = #{u_id}
+	UPDATE F_BOARD 
+	SET F_TITLE = #{f_title}, F_CONTENT = #{f_content}
+	WHERE F_NO = #{f_no}
 </update>
 
-<update id="updatePass">
- UPDATE B_USER
- SET U_PASS = #{u_pass}
- WHERE U_ID = #{u_id}
-</update>
 
-<update id="updateEmail">
-	UPDATE B_USER
-	SET EMAIL = #{email}
-	WHERE U_ID = #{u_id}
-</update>
+<!-- admin -->
 
-<update id="updatePhone">
-	UPDATE B_USER
-	SET PHONE = #{phone}
-	WHERE U_ID = #{u_id}
-</update>
-
-<!-- Admin 관리 페이지
--->
-
-
-<select resultType="UserDTO" id="selectAll">SELECT *FROM b_user </select>
-
-<!-- 로그인 페이지 -->
-
-
-<select resultType="int" id="check" >
-	SELECT COUNT(*)
-	FROM b_user
-	WHERE U_ID=#{u_id}
- </select>
-
-<select resultType="UserDTO" id="login" parameterType="UserDTO">
-	 SELECT * 
-	 FROM b_user
-	 WHERE U_ID=#{u_id} AND U_PASS=#{u_pass} 
- </select>
-
-<!-- -->
 
 
 </mapper>

@@ -1,12 +1,11 @@
-package com.proj.team.board.dao;
+package com.proj.team.board.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.proj.team.board.domain.FreeBoardVO;
 
-public interface FreeBoardDAO {
-	
+public interface FreeBoardService {
+
 	public List<FreeBoardVO> selectList();
 	public FreeBoardVO selectOne(int f_no);
 	public int insert(FreeBoardVO vo);

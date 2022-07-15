@@ -13,7 +13,9 @@
 <body>
 	<%@ include file="nav.jsp" %>
 
-
+		<h1><a href="board/list/">자유게시판</a></h1>
+		
+		
   <div class="slider-container">
   <div class="slider-control left inactive"></div>
   <div class="slider-control right"></div>
