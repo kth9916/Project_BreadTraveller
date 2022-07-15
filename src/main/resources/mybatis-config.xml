@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias ="UserDTO" type="com.proj.team.domain.UserDTO"/>
+        
+        <!--board alias-->
+        <typeAlias alias ="FreeBoardVO" type="com.proj.team.board.domain.FreeBoardVO"/>
+        
+        <!--여러개 등록할 수 있다.-->
+    </typeAliases>
+</configuration>
