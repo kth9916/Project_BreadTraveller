@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.proj.team.board.dao.FreeBoardMapper">
+
+ <select id="selectAll" resultType="FreeBoardVO">
+ 	SELECT F_NO, U_ID, F_TITLE, F_CONTENT, F_WRITER, F_WDATE, F_HIT, F_REPLY
+ 	FROM F_BOARD
+ </select>
+ 
+
+<select id="select" parameterType="FreeBoardVO" resultType="FreeBoardVO">
+	SELECT F_NO, F_WRITER
+ 	FROM F_BOARD
+ 	WHERE F_NO=#{F_NO} 
+ 	AND F_WRITER=#{f_writer}
+</select>
+
+<insert id="insertBoard">
+	INSERT INTO F_BOARD(F_NO,U_ID,F_TITLE,F_CONTENT,F_WRITER,F_WDATE,F_HIT,F_REPLY)
+	VALUES (F_SEQ.nextval,#{u_id},#{f_title},#{f_content},#{u_id},systimestamp,0,0)
+	
+</insert>
+
+<delete id="deleteBoard">
+	DELETE F_BOARD WHERE F_NO = #{f_no}
+
+</delete>
+
+<update id="updateAll">
+	UPDATE F_BOARD 
+	SET F_TITLE = #{f_title}, F_CONTENT = #{f_content}
+	WHERE F_NO = #{f_no}
+</update>
+
+
+<!-- admin -->
+
+
+
+</mapper>
