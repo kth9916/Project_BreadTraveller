@@ -33,7 +33,7 @@
 </insert>
 
 <delete id="deleteUser">
-	DELETE B_USER WHERE U_ID = #{u_id}
+	DELETE B_USER WHERE U_NUM = #{u_num}
 
 </delete>
 
@@ -67,10 +67,24 @@
 
 <select resultType="UserDTO" id="selectAll">
 	SELECT *
-	FROM b_user 
-
+	FROM b_user
+	<include refid="sort" />
 </select>
+<sql id ="sort">
+<if test="sort ==''">
+ORDER BY U_DATE DESC
+</if>
+<if test="sort == 'u_date'">
+ORDER BY U_DATE ASC
+</if>
 
+<if test="sort =='u_birth'">
+ORDER BY U_BIRTH DESC
+</if>
+<if test="sort =='u_num'">
+ORDER BY U_NUM DESC
+</if>
+</sql>
 <!-- 로그인 페이지 -->
 
 

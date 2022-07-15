@@ -1,8 +1,8 @@
-package com.proj.team.service;
+package com.proj.team.UserService;
 
 import java.util.List;
 
-import com.proj.team.domain.UserDTO;
+import com.proj.team.UserDTO.UserDTO;
 
 public interface UserService {
 	UserDTO login(UserDTO dto) throws Exception;
@@ -18,4 +18,6 @@ public interface UserService {
 	List<UserDTO> selectAll(UserDTO dto) throws Exception;
 	
 	UserDTO selectId(String u_id) throws Exception;
+	
+	void deleteUser(String u_num) throws Exception;
 }

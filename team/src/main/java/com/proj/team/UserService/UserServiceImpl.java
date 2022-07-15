@@ -1,4 +1,4 @@
-package com.proj.team.service;
+package com.proj.team.UserService;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import com.proj.team.dao.UserDAO;
-import com.proj.team.domain.UserDTO;
+import com.proj.team.UserDAO.UserDAO;
+import com.proj.team.UserDTO.UserDTO;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -48,5 +48,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserDTO selectId(String u_id) throws Exception{
 		return userDAO.selectId(u_id);
+	}
+	
+	@Override
+	public void deleteUser(String u_num)throws Exception{
+		userDAO.deleteUser(u_num);
 	}
 }

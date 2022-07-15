@@ -18,8 +18,8 @@
 <P>  The time on the server is ${serverTime}. </P>
 <a href="login">로그인 페이지 이동</a>
 <a href="register">회원가입 페이지 이동</a>
-<a href="<c:url value='/user/login' />">로그아웃</a>
-<a href="<c:url value='/user/List' />">마이</a>
+<a href="<c:url value='/login' />">로그아웃</a>
+<a href="<c:url value='/List' />">마이</a>
 <a href="<c:url value='/main' />">메인</a>
 
 <!-- 네이버 로그인 버튼 노출 영역 -->

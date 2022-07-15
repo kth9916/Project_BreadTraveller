@@ -59,7 +59,7 @@ $(function () {
   <div id="inviteContainer">
     <div class="logoContainer"><img class="text" src="<c:url value="/resources/images/breadLogo.png"></c:url>"/></div>
     <div class="acceptContainer">
-      <form action="<c:url value="/user/login" />" method="post" onsubmit="return formCheck(this);">
+      <form action="<c:url value="/login" />" method="post" onsubmit="return formCheck(this);">
         <h1>어서 오세요!</h1>
         <div id="msg">
             <c:if test="${not empty msg}">
@@ -74,12 +74,12 @@ $(function () {
           </div>
           <div class="formDiv" style="transition-delay: 0.4s">
             <p>PASSWSORD</p>
-            <input type="password" name="u_pass" required/><a class="forgotPas" href="<c:url value='user/forgotPas' />">FORGOT YOUR PASSWORD?</a>
+            <input type="password" name="u_pass" required/><a class="forgotPas" href="<c:url value='/forgotPas' />">FORGOT YOUR PASSWORD?</a>
             <input type="hidden" name="toURL" value="${param.toURL }">
           </div>
           <div class="formDiv" style="transition-delay: 0.6s">
             <button class="acceptBtn" type="submit">Login</button>
-            <span class="register">Need an account?<a href="<c:url value='/user/register' />">Register</a></span>
+            <span class="register">Need an account?<a href="<c:url value='register' />">Register</a></span>
           </div>
         </div>
    

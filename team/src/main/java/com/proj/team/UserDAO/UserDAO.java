@@ -1,8 +1,8 @@
-package com.proj.team.dao;
+package com.proj.team.UserDAO;
 
 import java.util.List;
 
-import com.proj.team.domain.UserDTO;
+import com.proj.team.UserDTO.UserDTO;
 
 public interface UserDAO {
 
@@ -19,4 +19,6 @@ public interface UserDAO {
 	int checknaver(String u_email) throws Exception;
 	
 	UserDTO selectId(String u_id) throws Exception;
+	
+	void deleteUser(String u_num) throws Exception;
 }

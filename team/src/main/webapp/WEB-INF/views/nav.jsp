@@ -48,7 +48,8 @@
    </div>
    	<div class="menu-item2">
     <div class="menu-text">
-      <a href="<c:url value='/user/logout' />">로그아웃</a>
+    <a href="<c:url value='List?aside=bread&sort=' />">마이</a>
+      <a href="<c:url value='logout' />">로그아웃</a>
     </div>
    </div>
 	
@@ -58,7 +59,7 @@
 	
 	
 	</nav>
-	<div class="logo"><img alt="" src="<c:url value="/resources/images/icon.png" ></c:url>" style="width:60px;height:60px;"></div>
+	<div class="logo"><a href="<c:url value='/' />"><img alt="" src="<c:url value="/resources/images/icon.png" ></c:url>" style="width:60px;height:60px;"></a></div>
 	<nav id="menu">
 
 	  <div class="menu-item">

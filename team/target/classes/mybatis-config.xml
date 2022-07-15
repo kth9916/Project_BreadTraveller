@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias ="UserDTO" type="com.proj.team.domain.UserDTO"/>
+        <typeAlias alias ="UserDTO" type="com.proj.team.UserDTO.UserDTO"/>
         <!--여러개 등록할 수 있다.-->
         <!--여러개 등록할 수 있다.-->
     </typeAliases>

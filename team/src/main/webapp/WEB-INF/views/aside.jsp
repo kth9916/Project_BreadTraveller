@@ -21,14 +21,14 @@
 			</ul>
 		</div>
 		<div>
-			<span class="s1">관심목록</span>
+			<span class="s1"><a href="<c:url value='List?aside=bread&sort=u_num' />">관심목록</a></span>
 		</div>	
 		<div>
-			<span class="s1">활동내역</span>
+			<span class="s1"><a href="<c:url value='List?aside=bread&sort=' />">활동내역</a></span>
 			<ul>
-				<li>종아요한 게시물?</li>
-				<li>내가 쓴 글</li>
-				<li>내 QNA</li>
+				<li><a href="<c:url value='List?aside=like&sort=u_date' />">좋아요한 게시물</a></li>
+				<li><a href="<c:url value='List?aside=bread&sort=' />">내가 쓴 글</a></li>
+				<li><a href="<c:url value='List?aside=bread&sort=' />">내 QNA</a></li>
 			</ul>
 		</div>
 	</div>

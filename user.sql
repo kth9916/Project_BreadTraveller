@@ -25,7 +25,8 @@ SELECT COUNT(*)
 	WHERE U_ID='1234';
 INSERT INTO b_user(U_NUM,U_ID,U_PASS,u_EMAIL,u_PHONE,u_birth, u_NICK,u_gender, u_ADDRESS,u_POST,U_NAME,QUESTION,ANSWER)
 VALUES (99,'a','a','a','a','a','a','a','a','a','a','a','a');
-
+INSERT INTO b_user(U_NUM,U_ID,U_PASS,u_EMAIL,u_PHONE,u_birth, u_NICK,u_gender, u_ADDRESS,u_POST,U_NAME,QUESTION,ANSWER)
+VALUES (33,'33','33','33','33','33','33','33','33','33','33','33','33');
 
 	SELECT COUNT(U_ID)
  	FROM b_user

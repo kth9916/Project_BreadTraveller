@@ -1,12 +1,6 @@
-package com.proj.team;
+package com.proj.team.UserController;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Random;
-import java.util.Set;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
@@ -27,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.proj.team.domain.UserDTO;
-import com.proj.team.service.UserService;
+import com.proj.team.UserDTO.UserDTO;
+import com.proj.team.UserService.UserService;
+
+
 
 @Controller
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -41,6 +37,9 @@ public class UserController {
 		
 	@Autowired
 	JavaMailSender mailSender;
+	
+	
+	
 	// 1. Login 링크 눌렀을 때
 	@RequestMapping (value = "/login", method = RequestMethod.GET)
 	public String loginForm(HttpServletRequest request) {
@@ -201,7 +200,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value ="/List", method = RequestMethod.GET)
-	public String getUserList(UserDTO dto, Model model, HttpSession session) throws Exception {
+	public String getUserList(UserDTO dto, Model model, HttpSession session,String aside) throws Exception {
+		
+		if(aside.equals("bread")) {
+			
 		//임시로 user 나중에 빵으로 변경
 		model.addAttribute("userList",userService.selectAll(dto));
 		
@@ -217,6 +219,11 @@ public class UserController {
 		//넣고 model로 값가져오기
 		model.addAttribute("user",dto2);
 		
+		}else if(aside.equals("like")) {
+			//임시로 user 나중에 빵으로 변경
+			model.addAttribute("userList",userService.selectAll(dto));
+			
+		}
 		return "my";
 	}
 	@RequestMapping(value ="/update", method = RequestMethod.GET)
@@ -229,7 +236,16 @@ public class UserController {
 		model.addAttribute("user",dto2);
 		return "update";
 	}
-	
+	@RequestMapping(value="/deleteUser", method = RequestMethod.POST)
+	public String deleteUser(HttpServletRequest request) throws Exception {
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i=0; i<size; i++) {
+			userService.deleteUser(ajaxMsg[i]);
+		}
+		return "redirect:List";
+	}
 	
 	
 }

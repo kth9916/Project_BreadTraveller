@@ -1,4 +1,4 @@
-package com.proj.team.domain;
+package com.proj.team.UserDTO;
 
 import java.util.Date;
 

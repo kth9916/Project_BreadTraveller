@@ -1,4 +1,4 @@
-package com.proj.team.dao;
+package com.proj.team.UserDAO;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.proj.team.domain.UserDTO;
+import com.proj.team.UserDTO.UserDTO;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -54,4 +54,8 @@ public class UserDAOImpl implements UserDAO {
 		return session.selectOne(namespace +"selectId",u_id);
 	}
 	
+	@Override
+	public void deleteUser(String u_num)throws Exception{
+		session.selectOne(namespace+"deleteUser",u_num);
+	}
 }
