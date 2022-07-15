@@ -49,21 +49,18 @@ $(function () {
 
 </script>
 <body>
-<%
-String u_id ="";
-	//id세션 속성의 값을 얻어내서 id변수에 저장
-	//인증된 사용자의 경우  id세션 속성의 값 null또는 공백이 아님
-	u_id = (String)session.getAttribute("u_id");
-	
-%>
+
+<%@ include file="nav.jsp" %>
+
 <!-- NORMALIZED CSS INSTALLED-->
 <!-- View settings for more info.-->
 <div id="container">
+
   <div id="inviteContainer">
     <div class="logoContainer"><img class="text" src="<c:url value="/resources/images/breadLogo.png"></c:url>"/></div>
     <div class="acceptContainer">
       <form action="<c:url value="/user/login" />" method="post" onsubmit="return formCheck(this);">
-        <h1>WELCOME BACK!</h1>
+        <h1>어서 오세요!</h1>
         <div id="msg">
             <c:if test="${not empty msg}">
                 <i class="fa fa-exclamation-circle"> ${msg}</i>

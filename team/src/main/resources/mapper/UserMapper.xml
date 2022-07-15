@@ -66,10 +66,10 @@
 <!-- 로그인 페이지 -->
 
 
-<select resultType="int" id="check" parameterType="String">
+<select resultType="int" id="check" >
 	SELECT COUNT(*)
 	FROM b_user
-	WHERE U_ID=#{u_id} AND U_PASS=#{u_pass}
+	WHERE U_ID=#{u_id}
  </select>
 
 <select resultType="UserDTO" id="login" parameterType="UserDTO">
