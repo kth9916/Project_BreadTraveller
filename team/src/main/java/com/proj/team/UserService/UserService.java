@@ -3,6 +3,7 @@ package com.proj.team.UserService;
 import java.util.List;
 
 import com.proj.team.UserDTO.UserDTO;
+import com.proj.team.util.PagingVO;
 
 public interface UserService {
 	UserDTO login(UserDTO dto) throws Exception;
@@ -20,4 +21,8 @@ public interface UserService {
 	UserDTO selectId(String u_id) throws Exception;
 	
 	void deleteUser(String u_num) throws Exception;
+	
+	public int countUser22();
+	
+	public List<UserDTO> selectUser22(PagingVO vo);
 }

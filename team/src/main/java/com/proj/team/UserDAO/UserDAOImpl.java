@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.proj.team.UserDTO.UserDTO;
+import com.proj.team.util.PagingVO;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -58,4 +59,17 @@ public class UserDAOImpl implements UserDAO {
 	public void deleteUser(String u_num)throws Exception{
 		session.selectOne(namespace+"deleteUser",u_num);
 	}
+	
+	@Override
+	public int countUser22() {
+		return session.selectOne(namespace+"countUser22");
+	}
+
+
+	@Override
+	public List<UserDTO> selectUser22(PagingVO vo) {
+		return session.selectList(namespace+"selectUser22",vo);
+	}
+	
+	
 }

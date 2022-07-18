@@ -3,8 +3,9 @@ package com.proj.team.UserDAO;
 import java.util.List;
 
 import com.proj.team.UserDTO.UserDTO;
+import com.proj.team.util.PagingVO;
 
-public interface UserDAO {
+public interface UserDAO{
 
 	List<UserDTO> selectAll(UserDTO dto) throws Exception;
 
@@ -21,4 +22,8 @@ public interface UserDAO {
 	UserDTO selectId(String u_id) throws Exception;
 	
 	void deleteUser(String u_num) throws Exception;
+	
+	public int countUser22();
+	
+	public List<UserDTO> selectUser22(PagingVO vo);
 }

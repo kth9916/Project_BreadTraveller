@@ -85,7 +85,28 @@ ORDER BY U_BIRTH DESC
 ORDER BY U_NUM DESC
 </if>
 </sql>
+
+
 <!-- 로그인 페이지 -->
+<!-- 총 게시글 갯수 출력 -->
+<select id="countUser22" resultType="int">
+	SELECT COUNT(*) FROM b_user
+</select>
+
+<!-- 페이징 처리 후 게시글 조회 -->
+<select id="selectUser22" resultType="UserDTO">
+	SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM b_user 
+						ORDER BY u_num DESC 
+						) A
+				)
+	WHERE RN BETWEEN #{start} AND #{end}
+</select>
+
 
 
 <select resultType="int" id="check" >

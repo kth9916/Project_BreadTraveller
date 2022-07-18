@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.proj.team.UserDAO.UserDAO;
 import com.proj.team.UserDTO.UserDTO;
+import com.proj.team.util.PagingVO;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -53,5 +54,15 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void deleteUser(String u_num)throws Exception{
 		userDAO.deleteUser(u_num);
+	}
+
+	@Override
+	public int countUser22() {
+		return userDAO.countUser22();
+	}
+
+	@Override
+	public List<UserDTO> selectUser22(PagingVO vo) {
+		return userDAO.selectUser22(vo);
 	}
 }
