@@ -14,12 +14,16 @@
  	FROM B_USER
  </select>
  -->
-
 <select id="select" parameterType="UserDTO" resultType="UserDTO">
-	SELECT U_ID, U_PASS
+	SELECT *
  	FROM B_USER
  	WHERE U_ID=#{u_id} 
- 	AND U_PASS=#{u_pass}
+</select>
+
+<select id="selectId" parameterType="String" resultType="UserDTO">
+	SELECT *
+ 	FROM B_USER
+ 	WHERE U_ID=#{u_id} 
 </select>
 
 <insert id="insertUser">
@@ -61,15 +65,25 @@
 -->
 
 
-<select resultType="UserDTO" id="selectAll">SELECT *FROM b_user </select>
+<select resultType="UserDTO" id="selectAll">
+	SELECT *
+	FROM b_user 
+
+</select>
 
 <!-- 로그인 페이지 -->
 
 
-<select resultType="int" id="check" parameterType="String">
+<select resultType="int" id="check" >
 	SELECT COUNT(*)
 	FROM b_user
-	WHERE U_ID=#{u_id} AND U_PASS=#{u_pass}
+	WHERE U_ID=#{u_id}
+ </select>
+
+<select resultType="int" id="checknaver" >
+	SELECT COUNT(*)
+	FROM b_user
+	WHERE U_EMAIL=#{u_email}
  </select>
 
 <select resultType="UserDTO" id="login" parameterType="UserDTO">
@@ -79,6 +93,5 @@
  </select>
 
 <!-- -->
-
 
 </mapper>

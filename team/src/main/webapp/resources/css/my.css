@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/*basic reset*/
+* {
+ 			box-sizing: border-box;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+}
+
+html {
+ 
+  /*Image only BG fallback*/
+  /*background = gradient + image pattern combo*/
+ /*임시 이미지 배경*/
+
+/*  height: 100%;
+
+  background:url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg")no-repeat center center fixed;
+  background-size:cover;
+*/
+}
+
+img{
+	width: 160px;
+	height: 160px;
+}
+section {
+	margin-top:100px;
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+}
+
+aside{
+	padding:10px;
+	width:220px;
+	display: flex;
+	flex-direction: column;
+	
+}
+li{
+	line-height: 50px;
+}
+main{
+	padding:10px;
+	width: 1000px;
+}
+
+.nav{
+	position: sticky;
+	top:0px;
+}
+
+.nav div {
+	border: 1px solid gray;
+	padding: 20px;
+}
+
+.s1{
+	font-size: 30px;
+	margin-top: 15px;
+	font-weight: bold;
+}
+main h2 {
+	margin: 30px;
+}
+
+main div {
+	margin:30px;
+}
+
+.pro li {
+	text-align: center;
+	line-height: 30px;
+}
+
+.check {
+    border-top: black solid 1.5px;
+    border-bottom: black solid 1.5px;
+    background-color: ghostwhite;
+    height: 75px;
+    padding: 24px;
+}
+a {
+    vertical-align: middle;
+}
+
+.s2{
+	text-align: center;
+	font-size: 30px;
+}
