@@ -4,8 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias ="UserDTO" type="com.proj.team.domain.UserDTO"/>
-        <!--여러개 등록할 수 있다.-->
-        <!--여러개 등록할 수 있다.-->
+    
+    	<!-- user alias -->
+        <typeAlias alias ="UserDTO" type="com.proj.team.user.domain.UserDTO"/>
+        
+        <!-- bread alias -->
+        <typeAlias alias="StoreDto" type="com.proj.team.bread.domain.StoreDto"/>
+        <typeAlias alias="SearchCondition" type="com.proj.team.bread.domain.SearchCondition"/>
+        <typeAlias alias="TourDto" type="com.proj.team.bread.domain.TourDto"/>
+        
+        <!--board alias-->
+        <typeAlias alias ="FreeBoardVO" type="com.proj.team.board.domain.FreeBoardVO"/>
+        <typeAlias alias ="Pagination" type="com.proj.team.board.domain.Pagination"/>
+        
     </typeAliases>
+    
+    
 </configuration>
+
