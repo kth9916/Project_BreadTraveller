@@ -42,7 +42,7 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/kosmo/.m2/repository/org/mybatis/mybatis/3.4.6/mybatis-3.4.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/K/.m2/repository/org/mybatis/mybatis/3.4.6/mybatis-3.4.6.jar"/>
 	<classpathentry kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
