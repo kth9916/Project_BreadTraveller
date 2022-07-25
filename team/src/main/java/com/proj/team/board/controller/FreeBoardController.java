@@ -1,18 +1,24 @@
 package com.proj.team.board.controller;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.proj.team.board.domain.FreeBoardVO;
-import com.proj.team.board.domain.Pagination;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.proj.team.board.common.FileUtil;
+import com.proj.team.board.domain.BoardReplyVO;
+import com.proj.team.board.domain.BoardVO;
+import com.proj.team.board.domain.FileVO;
+import com.proj.team.board.domain.SearchVO;
 import com.proj.team.board.service.FreeBoardService;
 
 @Controller
@@ -21,79 +27,146 @@ public class FreeBoardController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FreeBoardController.class);
 	
-	@Autowired
-	FreeBoardService freeBoardService;
-	
-	//FreeBoard 링크 눌렀을 때
-	@RequestMapping (value = "/list.action", method = RequestMethod.GET)
-	public String boardList(Model model,
-			@RequestParam(required=false,defaultValue="1")int page,
-			@RequestParam(required=false,defaultValue="1")int range
-			) throws Exception{
-		
-			//전체 게시글 개수
-			int listCnt = freeBoardService.getBoardListCnt();
-			
-			//페이징 정보 세팅
-			Pagination pagination = new Pagination();
-			pagination.pageInfo(page, range, listCnt);
-			
-			model.addAttribute("pagination",pagination);
-			model.addAttribute("boardList",freeBoardService.selectList(pagination));
-			return "board/freeboardlist";
-	}
-	
-	//글 읽어오기
-	@RequestMapping (value = "/read.action", method = RequestMethod.GET)
-	public String read(@RequestParam("f_no")int f_no, Model model) throws Exception {
-		logger.info("FreeBoardRead");
-		
-		model.addAttribute("boardContent",freeBoardService.read(f_no));
-		return "board/freeboardread";		
-	}
-	
-	
-	//글쓰기
-	@RequestMapping (value = "/write.action", method =RequestMethod.GET)
-	public String writeForm() {
-		logger.info("FreeBoardWrite");
-		
-		return "board/freeboardwrite";
-	}
-	
-	//글 쓰기 제출
-	@RequestMapping (value = "/save.action ", method =RequestMethod.POST)
-	public String writeSubmit(@ModelAttribute("FreeBoardVO")FreeBoardVO vo, RedirectAttributes rttr) throws Exception{
-		logger.info("FreeBoardWrite");
-		freeBoardService.insert(vo);
+	 @Autowired
+	    private FreeBoardService boardSvc;
+	    
+	 
+	 /**
+	  * 리스트
+	  * @param searchVO
+	  * @param modelMap
+	  * @return
+	 * @throws Exception 
+	  */
+	 @RequestMapping(value = "/boardList")
+	    public String boardList(SearchVO searchVO, ModelMap modelMap) throws Exception {
+		  
+	        if (searchVO.getBgno() == null) {
+	            searchVO.setBgno("1"); 
+	        }
+	        searchVO.pageCalculate( boardSvc.selectBoardCount(searchVO) ); // startRow, endRow
 
-		return "redirect:list.action";
-	}
+	        List<?> listview  = boardSvc.selectBoardList(searchVO);
+	        
+	        modelMap.addAttribute("listview", listview);
+	        modelMap.addAttribute("searchVO", searchVO);
+	        
+	        return "board/BoardList";
+	    }
+	    
+	    /** 
+	     * 글 쓰기. 
+	     * @throws Exception 
+	     */
+	    @RequestMapping(value = "/boardForm")
+	    public String boardForm(HttpServletRequest request, ModelMap modelMap) throws Exception {
+	    	 String bgno = request.getParameter("bgno");
+	         String brdno = request.getParameter("brdno");
+	         if (brdno != null) {
+	             BoardVO boardInfo = boardSvc.selectBoardOne(brdno);
+	             List<?> listview = boardSvc.selectBoardFileList(brdno);
+	         
+	             modelMap.addAttribute("boardInfo", boardInfo);
+	             modelMap.addAttribute("listview", listview);
+	             bgno = boardInfo.getBgno();
+	         }
+	         modelMap.addAttribute("bgno", bgno);
+	        
+	        return "board/BoardForm";
+	    }
+	    
+	    /**
+	     * 글 저장.
+	     * @throws Exception 
+	     */
+	    @RequestMapping(value = "/boardSave")
+	    public String boardSave(HttpServletRequest request, BoardVO boardInfo) throws Exception {
+	    	String[] fileno = request.getParameterValues("fileno");
+	        
+	        FileUtil fs = new FileUtil();
+	        List<FileVO> filelist = fs.saveAllFiles(boardInfo.getUploadfile());
+
+	        boardSvc.insertBoard(boardInfo, filelist, fileno);
+
+
+	        return "redirect:/boardList?bgno=" + boardInfo.getBgno();
+	    }
+
+	    /**
+	     * 글 읽기.
+	     * @throws Exception 
+	     */
+	    @RequestMapping(value = "/boardRead")
+	    public String boardRead(HttpServletRequest request, ModelMap modelMap) throws Exception {
+	        
+	    	String brdno = request.getParameter("brdno");
+	        
+	        boardSvc.updateBoardRead(brdno);
+	        BoardVO boardInfo = boardSvc.selectBoardOne(brdno);
+	        List<?> listview = boardSvc.selectBoardFileList(brdno);
+	        List<?> replylist = boardSvc.selectBoardReplyList(brdno);
+	        
+	        modelMap.addAttribute("boardInfo", boardInfo);
+	        modelMap.addAttribute("listview", listview);
+	        modelMap.addAttribute("replylist", replylist);
+	        
+	        return "board/BoardRead";
+	    }
+	    
+	    /**
+	     * 글 삭제.
+	     * @throws Exception 
+	     */
+	    @RequestMapping(value = "/boardDelete")
+	    public String boardDelete(HttpServletRequest request) throws Exception {
+	    	String brdno = request.getParameter("brdno");
+	        String bgno = request.getParameter("bgno");
+	        
+	        boardSvc.deleteBoardOne(brdno);
+	        
+	        return "redirect:/boardList?bgno=" + bgno;
+	    }
+
+	    /* ===================================================================== */
+	    
+	    /**
+	     * 댓글 저장.
+	     * @throws Exception 
+	     */
+	    @RequestMapping(value = "/boardReplySave")
+	    public String boardReplySave(HttpServletRequest request, BoardReplyVO boardReplyInfo, ModelMap modelMap) throws Exception {
+	        
+	    	boardSvc.insertBoardReply(boardReplyInfo);
+
+	        modelMap.addAttribute("replyInfo", boardReplyInfo);
+	        
+	        return "board/BoardReadAjax4Reply";        
+	    }
+	    
+	    /**
+	     * 댓글 삭제.
+	     * @throws Exception 
+	     */
+	    @RequestMapping(value = "/boardReplyDelete")
+	    public void boardReplyDelete(HttpServletResponse response, BoardReplyVO boardReplyInfo) throws Exception {
+	        
+	    	 ObjectMapper mapper = new ObjectMapper();
+	         response.setContentType("application/json;charset=UTF-8");
+	         
+	         try {
+	             if (!boardSvc.deleteBoardReply(boardReplyInfo.getReno()) ) {
+	                 response.getWriter().print(mapper.writeValueAsString("Fail"));
+	             } else {
+	                 response.getWriter().print(mapper.writeValueAsString("OK"));
+	             }
+	         } catch (IOException ex) {
+	             System.out.println("오류: 댓글 삭제에 문제가 발생했습니다.");
+	         }
+	    }
 	
-	//수정
-	@RequestMapping(value = "/update.action", method =RequestMethod.GET)
-	public String modify(@RequestParam("f_no") int f_no, @RequestParam("mode") String mode, Model model) throws Exception{
-		logger.info("FreeBoardEdit");
-		model.addAttribute("boardContent", freeBoardService.read(f_no));
-		model.addAttribute("mode", mode);
-		model.addAttribute("freeBoardVO",new FreeBoardVO());
-		
-		return "board/freeboardedit";
-	}
 	
-	//수정 저장
-	@RequestMapping(value="/updatesave.action", method=RequestMethod.POST)
-	public String updateSave(@ModelAttribute("FreeBoardVO") FreeBoardVO vo,RedirectAttributes rttr) throws Exception{
-		freeBoardService.update(vo);
-		return "redirect:list.action";
-	}
 	
-	//삭제
-	@RequestMapping(value = "/delete.action", method =RequestMethod.GET)
-	public String delete(RedirectAttributes rttr, @RequestParam("f_no") int f_no) throws Exception{
-		freeBoardService.delete(f_no);
-		return "redirect:list.action";
-	}
+	
 	
 	
 }

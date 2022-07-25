@@ -13,7 +13,7 @@
 <body>
 	<%@ include file="user/nav.jsp" %>
 
-		<h1><a href="freeboard/list.action">자유게시판</a></h1>
+		<h1><a href="freeboard/boardList">자유게시판</a></h1>
 		
 		<a href="<c:url value="/tour/region"/>"> 지역별 투어 추천</a>
 

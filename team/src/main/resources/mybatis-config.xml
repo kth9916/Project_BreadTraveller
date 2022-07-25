@@ -14,9 +14,12 @@
         <typeAlias alias="TourDto" type="com.proj.team.bread.domain.TourDto"/>
         
         <!--board alias-->
-        <typeAlias alias ="FreeBoardVO" type="com.proj.team.board.domain.FreeBoardVO"/>
-        <typeAlias alias ="Pagination" type="com.proj.team.board.domain.Pagination"/>
+        <typeAlias alias ="BoardVO" type="com.proj.team.board.domain.BoardVO"/>
+        <typeAlias alias ="PageVO" type="com.proj.team.board.domain.PageVO"/>
+        <typeAlias alias ="SearchVO" type="com.proj.team.board.domain.SearchVO"/>
         
+        <typeAlias alias ="BoardReplyVO" type="com.proj.team.board.domain.BoardReplyVO"/>
+        <typeAlias alias ="FileVO" type="com.proj.team.board.domain.FileVO"/>
     </typeAliases>
     
     
