@@ -15,11 +15,7 @@
         
         <!--board alias-->
         <typeAlias alias ="BoardVO" type="com.proj.team.board.domain.BoardVO"/>
-        <typeAlias alias ="PageVO" type="com.proj.team.board.domain.PageVO"/>
-        <typeAlias alias ="SearchVO" type="com.proj.team.board.domain.SearchVO"/>
-        
-        <typeAlias alias ="BoardReplyVO" type="com.proj.team.board.domain.BoardReplyVO"/>
-        <typeAlias alias ="FileVO" type="com.proj.team.board.domain.FileVO"/>
+        <typeAlias alias ="Criteria" type="com.proj.team.board.domain.Criteria"/>
     </typeAliases>
     
     
