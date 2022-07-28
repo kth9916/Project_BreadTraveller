@@ -121,7 +121,7 @@ public class BoardController {
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
 
-		return "redirect:/board/list";
+		return "redirect:/freeboard/list";
 	}
 
 	// 게시판 삭제
@@ -154,7 +154,7 @@ public class BoardController {
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
 		
-		return "redirect:/board/readView";
+		return "redirect:/freeboard/readView";
 	}
 	
 	

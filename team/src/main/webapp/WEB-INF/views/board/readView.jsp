@@ -48,7 +48,7 @@
 			
 			$(".replyWriteBtn").on("click", function(){
 				var formObj = $("form[name='replyForm']");
-				formObj.attr("action", "/board/replyWrite");
+				formObj.attr("action", "./replyWrite");
 				formObj.submit();
 			});
 			
