@@ -16,6 +16,8 @@
         <!--board alias-->
         <typeAlias alias ="BoardVO" type="com.proj.team.board.domain.BoardVO"/>
         <typeAlias alias ="Criteria" type="com.proj.team.board.domain.Criteria"/>
+        <typeAlias alias ="SearchCriteria" type="com.proj.team.board.domain.SearchCriteria"/>
+        <typeAlias alias ="ReplyVO" type="com.proj.team.board.domain.ReplyVO"/>
     </typeAliases>
     
     

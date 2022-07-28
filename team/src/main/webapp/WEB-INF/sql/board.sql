@@ -1,78 +1,10 @@
-create table TBL_BOARD(
-    bgno varchar2(100),
-    brdno varchar2(20) primary key,       --게시물 번호
-    brdtitle varchar2(100) not null,         --제목
-    brdmemo varchar2(4000) not null,      --게시물 내용
-    brdwriter varchar2(30) not null,         --글쓴이
-    brddate timestamp  default sysdate not null, --글 쓴 날짜    
-    brdhit number  ,                  --조회수
-    replycnt varchar2(500),                   --댓글
-    brddeleteflag varchar(10) default 'N',
-    filecnt varchar(100),
-    likecnt varchar(100)
-);
-
-
-create sequence BRDNO_SEQ
-increment by 1
-start with 1
-nocache;
-
-
-
-create table TBL_BOARDREPLY(
-    reno varchar2(20) primary key,
-    brdno varchar2(20) ,
-    rememo varchar2(2000),
-    rewriter varchar2(30),
-    redate timestamp not null,
-    redeleteflag varchar2(10),
-    reparent varchar2(20),
-    redepth varchar2(20),
-    reorder number
-);
-
-create table TBL_BOARDFILE(
-    brdno varchar2(20),
-    fileno number,
-    filename varchar2(100),
-    realname varchar2(200),
-    filesize number
-    
-);
-
-create sequence FILENO_SEQ
-increment by 1
-start with 1
-nocache;
-
-
-create table liketo(
-    likeno number(5) not null primary key,
-    brdno varchar(20) not null,
-    u_num number,
-    heart number(5) default 0 null,
-    foreign key(u_num) references b_user(u_num),
-    foreign key(brdno) references tbl_board(brdno)
-);
-
-
-drop table tbl_board;
-drop table liketo;
-drop table tbl_board;
-drop table TBL_BOARDFILE;
-drop table TBL_BOARDREPLY;
-
-
-
-----=-------------------------------------------------------------------
-
 CREATE TABLE F_BOARD(
     BNO NUMBER NOT NULL,
     TITLE VARCHAR2(100)     NOT NULL,
     CONTENT VARCHAR2(2000)  NOT NULL,
     WRITER VARCHAR2(100)    NOT NULL,
     REGDATE DATE            DEFAULT SYSDATE,
+    HIT NUMBER              DEFAULT 0,
     PRIMARY KEY(BNO)
 );
 
@@ -92,3 +24,39 @@ insert into f_board(bno, title, content, writer)
 select f_board_seq.nextval, title, content, writer from f_board;
 commit;
 
+
+create table F_reply (
+    bno number not null,
+    rno number not null,
+    content varchar2(1000) not null,
+    writer varchar2(50) not null,
+    regdate date default sysdate,
+    primary key(bno, rno)
+);
+
+alter table F_reply add constraint F_reply_bno foreign key(bno)
+references F_board(bno);
+
+create sequence F_reply_seq START WITH 1 MINVALUE 0;
+
+commit;
+
+
+CREATE TABLE F_FILE
+(
+    FILE_NO NUMBER,                         --파일 번호
+    BNO NUMBER NOT NULL,                    --게시판 번호
+    ORG_FILE_NAME VARCHAR2(260) NOT NULL,   --원본 파일 이름
+    STORED_FILE_NAME VARCHAR2(36) NOT NULL, --변경된 파일 이름
+    FILE_SIZE NUMBER,                       --파일 크기
+    REGDATE DATE DEFAULT SYSDATE NOT NULL,  --파일등록일
+    DEL_GB VARCHAR2(1) DEFAULT 'N' NOT NULL,--삭제구분
+    PRIMARY KEY(FILE_NO)                    --기본키 FILE_NO
+);
+
+CREATE SEQUENCE SEQ_F_FILE_NO
+START WITH 1 
+INCREMENT BY 1 
+NOMAXVALUE NOCACHE;
+
+COMMIT;
