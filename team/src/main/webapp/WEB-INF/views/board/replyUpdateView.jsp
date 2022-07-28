@@ -17,7 +17,7 @@
 			var formObj = $("form[name='updateForm']");
 			
 			$(".cancel_btn").on("click", function(){
-				location.href = "/freeboard/readView?bno=${replyUpdate.bno}"
+				location.href = "./readView?bno=${replyUpdate.bno}"
 					   + "&page=${scri.page}"
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"
@@ -36,12 +36,13 @@
 			<hr />
 			 
 			<div>
+				<%@ include file="../user/nav.jsp" %>
 				<%@include file="nav.jsp" %>
 			</div>
 			<hr />
 			
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/freeboard/replyUpdate">
+				<form name="updateForm" role="form" method="post" action="./replyUpdate">
 					<input type="hidden" name="bno" value="${replyUpdate.bno}" readonly="readonly"/>
 					<input type="hidden" id="rno" name="rno" value="${replyUpdate.rno}" />
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 

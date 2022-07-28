@@ -24,7 +24,7 @@
 			
 			$(".cancel_btn").on("click", function(){
 				event.preventDefault();
-				location.href = "/freeboard/readView?bno=${update.bno}"
+				location.href = "./readView?bno=${update.bno}"
 					   + "&page=${scri.page}"
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"
@@ -35,7 +35,7 @@
 				if(fn_valiChk()){
 					return false;
 				}
-				formObj.attr("action", "/freeboard/update");
+				formObj.attr("action", "./update");
 				formObj.attr("method", "post");
 				formObj.submit();
 			})
@@ -80,12 +80,13 @@
 			<hr />
 			 
 			<div>
+				<%@ include file="../user/nav.jsp" %>
 				<%@include file="nav.jsp" %>
 			</div>
 			<hr />
 			
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/freeboard/update" enctype="multipart/form-data">
+				<form name="updateForm" role="form" method="post" action="./update" enctype="multipart/form-data">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 
 					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 

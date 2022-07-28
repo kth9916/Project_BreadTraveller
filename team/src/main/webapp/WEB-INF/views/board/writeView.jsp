@@ -19,7 +19,7 @@
 				if(fn_valiChk()){
 					return false;
 				}
-				formObj.attr("action", "/freeboard/write");
+				formObj.attr("action", "./write");
 				formObj.attr("method", "post");
 				formObj.submit();
 			});
@@ -55,12 +55,13 @@
 			<hr />
 			 
 			<div>
+				<%@ include file="../user/nav.jsp" %>
 				<%@include file="nav.jsp" %>
 			</div>
 			<hr />
 			
 			<section id="container">
-				<form name="writeForm" method="post" action="/freeboard/write" enctype="multipart/form-data">
+				<form name="writeForm" method="post" action="./write" enctype="multipart/form-data">
 					<table>
 						<tbody>
 							<c:if test="${member.userId != null}">

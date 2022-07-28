@@ -20,7 +20,7 @@
 			
 			// 수정 
 			$(".update_btn").on("click", function(){
-				formObj.attr("action", "/freeboard/updateView");
+				formObj.attr("action", "./updateView");
 				formObj.attr("method", "get");
 				formObj.submit();				
 			})
@@ -31,7 +31,7 @@
 				var deleteYN = confirm("삭제하시겠습니까?");
 				if(deleteYN == true){
 					
-				formObj.attr("action", "/freeboard/delete");
+				formObj.attr("action", "./delete");
 				formObj.attr("method", "post");
 				formObj.submit();
 					
@@ -41,7 +41,7 @@
 			// 목록
 			$(".list_btn").on("click", function(){
 				
-				location.href = "/freeboard/list?page=${scri.page}"
+				location.href = "./list?page=${scri.page}"
 						      +"&perPageNum=${scri.perPageNum}"
 						      +"&searchType=${scri.searchType}&keyword=${scri.keyword}";
 			})
@@ -54,7 +54,7 @@
 			
 			//댓글 수정 View
 			$(".replyUpdateBtn").on("click", function(){
-				location.href = "/freeboard/replyUpdateView?bno=${read.bno}"
+				location.href = "./replyUpdateView?bno=${read.bno}"
 								+ "&page=${scri.page}"
 								+ "&perPageNum=${scri.perPageNum}"
 								+ "&searchType=${scri.searchType}"
@@ -64,7 +64,7 @@
 			
 			//댓글 삭제 View
 			$(".replyDeleteBtn").on("click", function(){
-				location.href = "/freeboard/replyDeleteView?bno=${read.bno}"
+				location.href = "./replyDeleteView?bno=${read.bno}"
 					+ "&page=${scri.page}"
 					+ "&perPageNum=${scri.perPageNum}"
 					+ "&searchType=${scri.searchType}"
@@ -75,7 +75,7 @@
 		function fn_fileDown(fileNo){
 			var formObj = $("form[name='readForm']");
 			$("#FILE_NO").attr("value", fileNo);
-			formObj.attr("action", "/freeboard/fileDown");
+			formObj.attr("action", "./fileDown");
 			formObj.submit();
 		}
 	</script>
@@ -88,6 +88,7 @@
 			<hr />
 			 
 			<div>
+				<%@ include file="../user/nav.jsp" %>
 				<%@include file="nav.jsp" %>
 			</div>
 			
